@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.env
+
+# Machine learning
+checkpoints/
+models/
+runs/
+wandb/
+mlruns/
+
+# Datasets and generated artifacts
+data/raw/
+data/processed/
+*.npz
+*.npy
+*.pt
+*.pth
+*.onnx
+
+# IDEs
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
