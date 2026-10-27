@@ -1,0 +1,19 @@
+# DREAM-OS Stage 0 — top-level pinned dependencies (verified 2026-10-27).
+# Full transitive lock: requirements.lock.txt  |  One-shot setup: ./setup.sh
+#
+# IMPORTANT (torch): the default PyPI torch wheel is a CUDA-13 build and will
+# NOT initialise the GPU on this machine (NVIDIA driver 575 / CUDA 12.9, needs
+# <=CUDA 12.x). Install torch from the CUDA 12.8 index instead:
+#   uv pip install --index-url https://download.pytorch.org/whl/cu128 torch==2.11.0
+#
+# IMPORTANT (mujoco): pinned to 3.3.6. mujoco 3.17.x makes mjtJoint a strict
+# enum, which breaks gymnasium-robotics 1.4.2 (its set_joint_qpos uses a
+# `joint_type in (HINGE, SLIDE)` membership test that fails for NumPy ints).
+
+torch==2.11.0              # +cu128 build (see note above)
+mujoco==3.3.6              # pinned for gymnasium-robotics 1.4.2 compatibility
+gymnasium==1.4.0
+gymnasium-robotics==1.4.2
+numpy==2.2.6
+scipy==1.15.3
+pyyaml==6.0.3

@@ -1,0 +1,61 @@
+{
+  "stage": 0,
+  "timestamp_utc": "2026-10-27T09:20:14+00:00",
+  "git_commit": "uninitialised",
+  "python": "3.10.12",
+  "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+  "seeds": {
+    "reset_seed": 0,
+    "action_seed": 123
+  },
+  "tests": {
+    "torch": {
+      "torch_version": "2.11.0+cu128",
+      "compiled_cuda": "12.8",
+      "cuda_available": true,
+      "device": "cuda",
+      "cpu_matmul_ok": true,
+      "gpu_name": "NVIDIA GeForce RTX 4050 Laptop GPU",
+      "gpu_matmul_ok": true,
+      "vram_free_gb": 5.47,
+      "vram_total_gb": 6.04,
+      "passed": true
+    },
+    "mujoco": {
+      "mujoco_version": "3.3.6",
+      "steps": 100,
+      "z_start": 1.0,
+      "z_end": 0.8018,
+      "dropped_m": 0.1982,
+      "passed": true
+    },
+    "benchmark": {
+      "gymnasium_version": "1.4.0",
+      "gymnasium_robotics": true,
+      "pusher": {
+        "env_id": "Pusher-v5",
+        "obs_is_dict": false,
+        "obs_dim": 23,
+        "qpos_dim": 11,
+        "episode_return": -63.7717,
+        "is_success": false,
+        "reproducible": true,
+        "passed": true
+      },
+      "fetchpush": {
+        "env_id": "FetchPush-v4",
+        "obs_is_dict": true,
+        "obs_dim": 25,
+        "qpos_dim": 22,
+        "episode_return": -40.0,
+        "is_success": false,
+        "reproducible": true,
+        "passed": true
+      },
+      "passed": true
+    }
+  },
+  "wall_seconds": 0.49,
+  "peak_ram_gb": 0.79,
+  "all_passed": true
+}

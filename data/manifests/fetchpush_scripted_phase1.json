@@ -1,0 +1,503 @@
+{
+  "dataset_id": "fetchpush_scripted_phase1",
+  "env": "FetchPush-v4",
+  "policy": "scripted",
+  "timestamp_utc": "2026-10-27T09:28:42+00:00",
+  "git_commit": "54ce7e105caf7d980251b67221bb46dc22e2de95",
+  "versions": {
+    "gymnasium": "1.4.0",
+    "gymnasium_robotics": "1.4.2",
+    "mujoco": "3.3.6",
+    "torch": "2.11.0+cu128",
+    "numpy": "2.2.6"
+  },
+  "base_seed": 0,
+  "action_rng": "numpy.default_rng(1000 + seed)",
+  "episodes": 60,
+  "max_steps": 50,
+  "n_transitions": 3000,
+  "success_rate": 0.25,
+  "obs_dim": 25,
+  "episode_list": [
+    {
+      "episode": 0,
+      "file": "ep_0000.npz",
+      "seed": 0,
+      "length": 50,
+      "success": false,
+      "return": -50.0
+    },
+    {
+      "episode": 1,
+      "file": "ep_0001.npz",
+      "seed": 1,
+      "length": 50,
+      "success": true,
+      "return": -38.0
+    },
+    {
+      "episode": 2,
+      "file": "ep_0002.npz",
+      "seed": 2,
+      "length": 50,
+      "success": false,
+      "return": -50.0
+    },
+    {
+      "episode": 3,
+      "file": "ep_0003.npz",
+      "seed": 3,
+      "length": 50,
+      "success": false,
+      "return": -50.0
+    },
+    {
+      "episode": 4,
+      "file": "ep_0004.npz",
+      "seed": 4,
+      "length": 50,
+      "success": true,
+      "return": -46.0
+    },
+    {
+      "episode": 5,
+      "file": "ep_0005.npz",
+      "seed": 5,
+      "length": 50,
+      "success": false,
+      "return": -50.0
+    },
+    {
+      "episode": 6,
+      "file": "ep_0006.npz",
+      "seed": 6,
+      "length": 50,
+      "success": false,
+      "return": -50.0
+    },
+    {
+      "episode": 7,
+      "file": "ep_0007.npz",
+      "seed": 7,
+      "length": 50,
+      "success": false,
+      "return": -50.0
+    },
+    {
+      "episode": 8,
+      "file": "ep_0008.npz",
+      "seed": 8,
+      "length": 50,
+      "success": false,
+      "return": -50.0
+    },
+    {
+      "episode": 9,
+      "file": "ep_0009.npz",
+      "seed": 9,
+      "length": 50,
+      "success": false,
+      "return": -50.0
+    },
+    {
+      "episode": 10,
+      "file": "ep_0010.npz",
+      "seed": 10,
+      "length": 50,
+      "success": true,
+      "return": -46.0
+    },
+    {
+      "episode": 11,
+      "file": "ep_0011.npz",
+      "seed": 11,
+      "length": 50,
+      "success": true,
+      "return": -43.0
+    },
+    {
+      "episode": 12,
+      "file": "ep_0012.npz",
+      "seed": 12,
+      "length": 50,
+      "success": false,
+      "return": -50.0
+    },
+    {
+      "episode": 13,
+      "file": "ep_0013.npz",
+      "seed": 13,
+      "length": 50,
+      "success": false,
+      "return": -50.0
+    },
+    {
+      "episode": 14,
+      "file": "ep_0014.npz",
+      "seed": 14,
+      "length": 50,
+      "success": true,
+      "return": -48.0
+    },
+    {
+      "episode": 15,
+      "file": "ep_0015.npz",
+      "seed": 15,
+      "length": 50,
+      "success": false,
+      "return": -50.0
+    },
+    {
+      "episode": 16,
+      "file": "ep_0016.npz",
+      "seed": 16,
+      "length": 50,
+      "success": true,
+      "return": -44.0
+    },
+    {
+      "episode": 17,
+      "file": "ep_0017.npz",
+      "seed": 17,
+      "length": 50,
+      "success": false,
+      "return": -50.0
+    },
+    {
+      "episode": 18,
+      "file": "ep_0018.npz",
+      "seed": 18,
+      "length": 50,
+      "success": true,
+      "return": -46.0
+    },
+    {
+      "episode": 19,
+      "file": "ep_0019.npz",
+      "seed": 19,
+      "length": 50,
+      "success": false,
+      "return": -50.0
+    },
+    {
+      "episode": 20,
+      "file": "ep_0020.npz",
+      "seed": 20,
+      "length": 50,
+      "success": true,
+      "return": -42.0
+    },
+    {
+      "episode": 21,
+      "file": "ep_0021.npz",
+      "seed": 21,
+      "length": 50,
+      "success": false,
+      "return": -50.0
+    },
+    {
+      "episode": 22,
+      "file": "ep_0022.npz",
+      "seed": 22,
+      "length": 50,
+      "success": true,
+      "return": -42.0
+    },
+    {
+      "episode": 23,
+      "file": "ep_0023.npz",
+      "seed": 23,
+      "length": 50,
+      "success": false,
+      "return": -50.0
+    },
+    {
+      "episode": 24,
+      "file": "ep_0024.npz",
+      "seed": 24,
+      "length": 50,
+      "success": false,
+      "return": -50.0
+    },
+    {
+      "episode": 25,
+      "file": "ep_0025.npz",
+      "seed": 25,
+      "length": 50,
+      "success": false,
+      "return": -50.0
+    },
+    {
+      "episode": 26,
+      "file": "ep_0026.npz",
+      "seed": 26,
+      "length": 50,
+      "success": false,
+      "return": -50.0
+    },
+    {
+      "episode": 27,
+      "file": "ep_0027.npz",
+      "seed": 27,
+      "length": 50,
+      "success": false,
+      "return": -50.0
+    },
+    {
+      "episode": 28,
+      "file": "ep_0028.npz",
+      "seed": 28,
+      "length": 50,
+      "success": false,
+      "return": -50.0
+    },
+    {
+      "episode": 29,
+      "file": "ep_0029.npz",
+      "seed": 29,
+      "length": 50,
+      "success": false,
+      "return": -50.0
+    },
+    {
+      "episode": 30,
+      "file": "ep_0030.npz",
+      "seed": 30,
+      "length": 50,
+      "success": false,
+      "return": -50.0
+    },
+    {
+      "episode": 31,
+      "file": "ep_0031.npz",
+      "seed": 31,
+      "length": 50,
+      "success": false,
+      "return": -50.0
+    },
+    {
+      "episode": 32,
+      "file": "ep_0032.npz",
+      "seed": 32,
+      "length": 50,
+      "success": true,
+      "return": -46.0
+    },
+    {
+      "episode": 33,
+      "file": "ep_0033.npz",
+      "seed": 33,
+      "length": 50,
+      "success": false,
+      "return": -50.0
+    },
+    {
+      "episode": 34,
+      "file": "ep_0034.npz",
+      "seed": 34,
+      "length": 50,
+      "success": false,
+      "return": -50.0
+    },
+    {
+      "episode": 35,
+      "file": "ep_0035.npz",
+      "seed": 35,
+      "length": 50,
+      "success": false,
+      "return": -50.0
+    },
+    {
+      "episode": 36,
+      "file": "ep_0036.npz",
+      "seed": 36,
+      "length": 50,
+      "success": false,
+      "return": -50.0
+    },
+    {
+      "episode": 37,
+      "file": "ep_0037.npz",
+      "seed": 37,
+      "length": 50,
+      "success": false,
+      "return": -50.0
+    },
+    {
+      "episode": 38,
+      "file": "ep_0038.npz",
+      "seed": 38,
+      "length": 50,
+      "success": false,
+      "return": -50.0
+    },
+    {
+      "episode": 39,
+      "file": "ep_0039.npz",
+      "seed": 39,
+      "length": 50,
+      "success": false,
+      "return": -50.0
+    },
+    {
+      "episode": 40,
+      "file": "ep_0040.npz",
+      "seed": 40,
+      "length": 50,
+      "success": false,
+      "return": -50.0
+    },
+    {
+      "episode": 41,
+      "file": "ep_0041.npz",
+      "seed": 41,
+      "length": 50,
+      "success": false,
+      "return": -50.0
+    },
+    {
+      "episode": 42,
+      "file": "ep_0042.npz",
+      "seed": 42,
+      "length": 50,
+      "success": true,
+      "return": -47.0
+    },
+    {
+      "episode": 43,
+      "file": "ep_0043.npz",
+      "seed": 43,
+      "length": 50,
+      "success": false,
+      "return": -50.0
+    },
+    {
+      "episode": 44,
+      "file": "ep_0044.npz",
+      "seed": 44,
+      "length": 50,
+      "success": false,
+      "return": -50.0
+    },
+    {
+      "episode": 45,
+      "file": "ep_0045.npz",
+      "seed": 45,
+      "length": 50,
+      "success": false,
+      "return": -50.0
+    },
+    {
+      "episode": 46,
+      "file": "ep_0046.npz",
+      "seed": 46,
+      "length": 50,
+      "success": false,
+      "return": -50.0
+    },
+    {
+      "episode": 47,
+      "file": "ep_0047.npz",
+      "seed": 47,
+      "length": 50,
+      "success": false,
+      "return": -50.0
+    },
+    {
+      "episode": 48,
+      "file": "ep_0048.npz",
+      "seed": 48,
+      "length": 50,
+      "success": false,
+      "return": -50.0
+    },
+    {
+      "episode": 49,
+      "file": "ep_0049.npz",
+      "seed": 49,
+      "length": 50,
+      "success": false,
+      "return": -50.0
+    },
+    {
+      "episode": 50,
+      "file": "ep_0050.npz",
+      "seed": 50,
+      "length": 50,
+      "success": true,
+      "return": -49.0
+    },
+    {
+      "episode": 51,
+      "file": "ep_0051.npz",
+      "seed": 51,
+      "length": 50,
+      "success": false,
+      "return": -50.0
+    },
+    {
+      "episode": 52,
+      "file": "ep_0052.npz",
+      "seed": 52,
+      "length": 50,
+      "success": false,
+      "return": -50.0
+    },
+    {
+      "episode": 53,
+      "file": "ep_0053.npz",
+      "seed": 53,
+      "length": 50,
+      "success": true,
+      "return": -44.0
+    },
+    {
+      "episode": 54,
+      "file": "ep_0054.npz",
+      "seed": 54,
+      "length": 50,
+      "success": true,
+      "return": -41.0
+    },
+    {
+      "episode": 55,
+      "file": "ep_0055.npz",
+      "seed": 55,
+      "length": 50,
+      "success": false,
+      "return": -50.0
+    },
+    {
+      "episode": 56,
+      "file": "ep_0056.npz",
+      "seed": 56,
+      "length": 50,
+      "success": false,
+      "return": -50.0
+    },
+    {
+      "episode": 57,
+      "file": "ep_0057.npz",
+      "seed": 57,
+      "length": 50,
+      "success": false,
+      "return": -50.0
+    },
+    {
+      "episode": 58,
+      "file": "ep_0058.npz",
+      "seed": 58,
+      "length": 50,
+      "success": false,
+      "return": -50.0
+    },
+    {
+      "episode": 59,
+      "file": "ep_0059.npz",
+      "seed": 59,
+      "length": 50,
+      "success": true,
+      "return": -46.0
+    }
+  ]
+}
