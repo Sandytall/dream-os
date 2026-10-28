@@ -1,0 +1,132 @@
+{
+  "phase": "9C",
+  "stage": "failure_atlas",
+  "dataset_id": "fetchslide_phase8",
+  "env": "FetchSlide-v4",
+  "timestamp_utc": "2026-10-28T02:47:40+00:00",
+  "provenance": {
+    "git_commit": "9ad92c5cee362873db120955d644b7d5248e02d9",
+    "device": "cuda",
+    "diagnostic_horizon": 10,
+    "rollout_K": 5,
+    "ensemble": 5,
+    "n_windows": 1476,
+    "subject": "rollout K5 (adopted) vs one-step baseline"
+  },
+  "error_by_motion_regime": {
+    "quasi_static": {
+      "n": 665,
+      "frac": 0.451,
+      "rollout_err_m": 0.03232,
+      "baseline_err_m": 0.0544
+    },
+    "contact_driven": {
+      "n": 453,
+      "frac": 0.307,
+      "rollout_err_m": 0.06097,
+      "baseline_err_m": 0.1055
+    },
+    "free_sliding": {
+      "n": 358,
+      "frac": 0.243,
+      "rollout_err_m": 0.09351,
+      "baseline_err_m": 0.11727
+    }
+  },
+  "contact_x_travel_failure_map_rollout": {
+    "contact=near(<0.05),travel=low(<0.02)": {
+      "n": 33,
+      "rollout_err_m": 0.04279
+    },
+    "contact=near(<0.05),travel=mid": {
+      "n": 39,
+      "rollout_err_m": 0.10382
+    },
+    "contact=near(<0.05),travel=high(>0.08)": {
+      "n": 296,
+      "rollout_err_m": 0.07975
+    },
+    "contact=mid,travel=low(<0.02)": {
+      "n": 236,
+      "rollout_err_m": 0.04117
+    },
+    "contact=mid,travel=mid": {
+      "n": 61,
+      "rollout_err_m": 0.04652
+    },
+    "contact=mid,travel=high(>0.08)": {
+      "n": 154,
+      "rollout_err_m": 0.06503
+    },
+    "contact=far(>0.10),travel=low(<0.02)": {
+      "n": 451,
+      "rollout_err_m": 0.02907
+    },
+    "contact=far(>0.10),travel=mid": {
+      "n": 66,
+      "rollout_err_m": 0.02529
+    },
+    "contact=far(>0.10),travel=high(>0.08)": {
+      "n": 140,
+      "rollout_err_m": 0.11557
+    }
+  },
+  "error_by_action_magnitude_rollout": {
+    "low(<1)": {
+      "n": 486,
+      "frac": 0.329,
+      "mean_err_m": 0.06601
+    },
+    "mid(1-1.4)": {
+      "n": 927,
+      "frac": 0.628,
+      "mean_err_m": 0.05185
+    },
+    "high(>1.4)": {
+      "n": 63,
+      "frac": 0.043,
+      "mean_err_m": 0.03887
+    }
+  },
+  "error_by_peak_object_speed_rollout": {
+    "slow(<0.01)": {
+      "n": 819,
+      "frac": 0.555,
+      "mean_err_m": 0.03418
+    },
+    "mid": {
+      "n": 251,
+      "frac": 0.17,
+      "mean_err_m": 0.06794
+    },
+    "fast(>0.03)": {
+      "n": 406,
+      "frac": 0.275,
+      "mean_err_m": 0.09247
+    }
+  },
+  "coasting_distance_bias_free_sliding": {
+    "n_free_sliding": 358,
+    "real_mean_travel_m": 0.265,
+    "rollout_mean_predicted_travel_m": 0.2081,
+    "baseline_mean_predicted_travel_m": 0.1941,
+    "rollout_signed_travel_bias_m": -0.0569,
+    "baseline_signed_travel_bias_m": -0.071,
+    "interpretation": "positive bias = model imagines the puck sliding FARTHER than reality (under-estimated friction/deceleration)"
+  },
+  "uncertainty_ood_calibration": {
+    "spearman_uncertainty_vs_error": 0.662,
+    "spearman_ood_vs_error": 0.215,
+    "spearman_uncertainty_vs_ood": 0.291,
+    "err_hi_lo_uncertainty_tercile_m": [
+      0.08132,
+      0.01751
+    ],
+    "err_hi_lo_ood_tercile_m": [
+      0.07146,
+      0.03413
+    ],
+    "coverage_limited_note": "high-OOD, high-error windows = where training coverage is insufficient"
+  },
+  "wall_seconds": 125.34
+}

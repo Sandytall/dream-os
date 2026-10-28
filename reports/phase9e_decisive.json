@@ -1,0 +1,133 @@
+{
+  "phase": "9E",
+  "stage": "decisive_experiments",
+  "dataset_id": "fetchslide_phase8",
+  "env": "FetchSlide-v4",
+  "timestamp_utc": "2026-10-28T04:45:01+00:00",
+  "provenance": {
+    "git_commit": "9ad92c5cee362873db120955d644b7d5248e02d9",
+    "device": "cuda",
+    "n_seeds": 3,
+    "epochs": 400,
+    "patience": 40,
+    "rollout_K": 5,
+    "baseline_checkpoint": "world_model/checkpoints/fetchslide_rollout_k5.pt",
+    "aug_checkpoint": "world_model/checkpoints/fetchslide_augvel_k5.pt"
+  },
+  "free_slide_windows": 354,
+  "E_abs_velocity_feature": {
+    "single_factor": "added absolute object-velocity input (finite diff, recomputed per step)",
+    "baseline_rollout_K5": {
+      "signed_travel_bias_m_mean": -0.0522,
+      "signed_travel_bias_m_std": 0.0037,
+      "endpoint_object_rmse_m_mean": 0.0936,
+      "endpoint_object_rmse_m_std": 0.0041,
+      "multistep_object_rmse_m_mean": {
+        "1": 0.0044,
+        "5": 0.0161,
+        "10": 0.0314,
+        "15": 0.0469,
+        "20": 0.0653
+      },
+      "multistep_object_rmse_m_std": {
+        "1": 0.0007,
+        "5": 0.002,
+        "10": 0.0026,
+        "15": 0.0021,
+        "20": 0.0024
+      }
+    },
+    "augvel_rollout_K5": {
+      "signed_travel_bias_m_mean": -0.0487,
+      "signed_travel_bias_m_std": 0.0063,
+      "endpoint_object_rmse_m_mean": 0.0922,
+      "endpoint_object_rmse_m_std": 0.0099,
+      "multistep_object_rmse_m_mean": {
+        "1": 1.9748,
+        "5": 2.3413,
+        "10": 2.991,
+        "15": 3.5956,
+        "20": 3.8776
+      },
+      "multistep_object_rmse_m_std": {
+        "1": 0.9911,
+        "5": 0.4858,
+        "10": 0.8408,
+        "15": 1.0974,
+        "20": 0.9933
+      }
+    },
+    "bias_magnitude_drop_m": 0.0035,
+    "bias_spread_m": 0.01,
+    "bias_shrank_beyond_spread": false,
+    "endpoint_drop_m": 0.0014,
+    "endpoint_improved_beyond_spread": false,
+    "aug_full_episode_h20_m": 3.878,
+    "baseline_full_episode_h20_m": 0.065,
+    "aug_long_horizon_unstable": true,
+    "stability_note": "the finite-diff velocity feature is fed back open-loop; stable on short free-slide windows (real v0) but diverges on full-episode rollout from rest (v0=0)"
+  },
+  "E_horizon_sweep": {
+    "single_factor": "training rollout horizon K",
+    "bias_and_endpoint_by_K": {
+      "1": {
+        "signed_travel_bias_m": -0.0168,
+        "endpoint_object_rmse_m": 0.1204
+      },
+      "3": {
+        "signed_travel_bias_m": -0.0331,
+        "endpoint_object_rmse_m": 0.0966
+      },
+      "5": {
+        "signed_travel_bias_m": -0.0572,
+        "endpoint_object_rmse_m": 0.094
+      },
+      "10": {
+        "signed_travel_bias_m": -0.0533,
+        "endpoint_object_rmse_m": 0.092
+      }
+    },
+    "bias_floor_m": 0.0168,
+    "K5_to_K10_bias_drop_m": 0.0039,
+    "horizon_keeps_helping_at_top_end": false
+  },
+  "persistence_multistep": {
+    "1": 0.0,
+    "5": 0.0217,
+    "10": 0.0675,
+    "15": 0.1118,
+    "20": 0.1569
+  },
+  "winning_hypothesis": "H_friction",
+  "friction_positively_demonstrated": false,
+  "recommended_next_experiment": "E_damping_intervention: directly test learned over-damping by adding a velocity-dependent decay / targeted free-slide loss, measured against held-out free-slide travel -- the positive test H_friction still lacks",
+  "hypothesis_status": {
+    "H_friction": {
+      "status": "most_consistent_by_elimination",
+      "evidence": "the under-travel (~-0.0522 m) persists under BOTH a velocity input and a larger horizon, and |bias| does not approach zero with K (floor +0.0168 m). Most consistent with learned over-damping, but NOT positively demonstrated -- a damping-targeted intervention (E_damping_intervention) is the decisive next test"
+    },
+    "H_velocity": {
+      "status": "fix_contradicted",
+      "evidence": "absolute-velocity input did NOT reduce the free-slide under-travel bias (-0.0522->-0.0487 m, within seed spread) or endpoint error (0.0936->0.0922 m); moreover the velocity-feedback rollout is UNSTABLE from rest (full-episode h20 diverged to 3.88 m vs baseline 0.065 m), so THIS remedy is contradicted while a stable velocity parameterization remains untested"
+    },
+    "H_horizon": {
+      "status": "contradicted",
+      "evidence": "free-slide |bias| does not fall toward zero as K grows: K1 0.017 -> K10 0.053 m (it grows, then plateaus)"
+    },
+    "H_coverage": {
+      "status": "unresolved",
+      "evidence": "E_add_freeslide_data not run; standing OOD->error (0.22) weakly argues against"
+    }
+  },
+  "gate_D_experiments_discriminative": true,
+  "gate_E_learning_benefit": {
+    "endpoint_improved_beyond_spread": false,
+    "overall_multistep_improved_beyond_spread": false,
+    "h10_drop_m": -2.9596,
+    "h20_drop_m": -3.8123,
+    "learning_benefit_demonstrated": false,
+    "decision": "keep rollout_K5 (roll back)",
+    "note": "measured independently of hypothesis discrimination; checkpoint rollback if no benefit"
+  },
+  "wall_seconds": 327.77
+}

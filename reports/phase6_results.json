@@ -1,0 +1,288 @@
+{
+  "phase": 6,
+  "dataset_id": "fetchpush_scripted_phase1",
+  "timestamp_utc": "2026-10-27T14:04:17+00:00",
+  "provenance": {
+    "git_commit": "9ad92c5cee362873db120955d644b7d5248e02d9",
+    "device": "cuda",
+    "ensemble_size": 5,
+    "m_starts": 25,
+    "horizon": 15,
+    "budget_B": 30,
+    "n_seeds": 5,
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "metric": "held-out object-position RMSE (m), lower=better; mean +/- std over init seeds; measured on real test data only (model never certifies itself)",
+  "max_reconstruction_err_m": 0.0,
+  "augmentation_starts_disjoint_from_test": true,
+  "real_transitions_added_per_condition": [
+    450
+  ],
+  "base": {
+    "object_pos_rmse_m_mean": 0.00621,
+    "object_pos_rmse_m_std": 0.00213,
+    "multistep_object_rmse_m": {
+      "1": 0.0044,
+      "5": 0.024,
+      "10": 0.0703,
+      "20": 0.1156
+    },
+    "runs": [
+      0.00443,
+      0.00465,
+      0.00924,
+      0.00437,
+      0.00836
+    ],
+    "n_transitions_added": 0,
+    "rollback_reference": true
+  },
+  "panels": {
+    "off_distribution": {
+      "conditions": {
+        "random": {
+          "object_pos_rmse_m_mean": 0.00946,
+          "object_pos_rmse_m_std": 0.00178,
+          "physical_state_rmse_mean": 0.03573,
+          "multistep_object_rmse_m": {
+            "1": 0.0067,
+            "5": 0.0311,
+            "10": 0.0971,
+            "20": 0.1982
+          },
+          "runs": [
+            0.00892,
+            0.00801,
+            0.00851,
+            0.00891,
+            0.01296
+          ],
+          "n_transitions_added": 450,
+          "seeds": 5,
+          "beats_base": false,
+          "beats_random": false
+        },
+        "dream_composite": {
+          "object_pos_rmse_m_mean": 0.00843,
+          "object_pos_rmse_m_std": 0.00114,
+          "physical_state_rmse_mean": 0.03478,
+          "multistep_object_rmse_m": {
+            "1": 0.0073,
+            "5": 0.0283,
+            "10": 0.0889,
+            "20": 0.172
+          },
+          "runs": [
+            0.00928,
+            0.00835,
+            0.00891,
+            0.00937,
+            0.00626
+          ],
+          "n_transitions_added": 450,
+          "beats_base": false,
+          "beats_random": false
+        },
+        "dream_uncertainty": {
+          "object_pos_rmse_m_mean": 0.00843,
+          "object_pos_rmse_m_std": 0.00114,
+          "physical_state_rmse_mean": 0.03478,
+          "multistep_object_rmse_m": {
+            "1": 0.0073,
+            "5": 0.0283,
+            "10": 0.0889,
+            "20": 0.172
+          },
+          "runs": [
+            0.00928,
+            0.00835,
+            0.00891,
+            0.00937,
+            0.00626
+          ],
+          "n_transitions_added": 450,
+          "beats_base": false,
+          "beats_random": false
+        },
+        "oracle": {
+          "object_pos_rmse_m_mean": 0.00808,
+          "object_pos_rmse_m_std": 0.00194,
+          "physical_state_rmse_mean": 0.03439,
+          "multistep_object_rmse_m": {
+            "1": 0.0057,
+            "5": 0.0251,
+            "10": 0.0807,
+            "20": 0.175
+          },
+          "runs": [
+            0.00932,
+            0.00847,
+            0.00897,
+            0.00937,
+            0.00426
+          ],
+          "n_transitions_added": 450,
+          "beats_base": false,
+          "beats_random": false
+        },
+        "imagined_harmful": {
+          "object_pos_rmse_m_mean": 0.00709,
+          "object_pos_rmse_m_std": 0.00231,
+          "physical_state_rmse_mean": 0.03415,
+          "multistep_object_rmse_m": {
+            "1": 0.0047,
+            "5": 0.0259,
+            "10": 0.0749,
+            "20": 0.1357
+          },
+          "runs": [
+            0.00414,
+            0.00447,
+            0.00902,
+            0.00947,
+            0.00836
+          ],
+          "n_transitions_added": 75,
+          "imagined_transitions_dropped_nonfinite": 375,
+          "beats_base": false,
+          "beats_random": true
+        }
+      },
+      "rollback_decisions": {
+        "random": "rollback_to_base",
+        "dream_composite": "rollback_to_base",
+        "dream_uncertainty": "rollback_to_base",
+        "oracle": "rollback_to_base",
+        "imagined_harmful": "rollback_to_base"
+      },
+      "pool_size": 150
+    },
+    "in_distribution": {
+      "conditions": {
+        "random": {
+          "object_pos_rmse_m_mean": 0.00718,
+          "object_pos_rmse_m_std": 0.00163,
+          "physical_state_rmse_mean": 0.03417,
+          "multistep_object_rmse_m": {
+            "1": 0.0074,
+            "5": 0.0255,
+            "10": 0.0703,
+            "20": 0.141
+          },
+          "runs": [
+            0.00856,
+            0.00785,
+            0.00639,
+            0.00871,
+            0.00437
+          ],
+          "n_transitions_added": 450,
+          "seeds": 5,
+          "beats_base": false,
+          "beats_random": false
+        },
+        "dream_composite": {
+          "object_pos_rmse_m_mean": 0.00939,
+          "object_pos_rmse_m_std": 0.00319,
+          "physical_state_rmse_mean": 0.03564,
+          "multistep_object_rmse_m": {
+            "1": 0.0062,
+            "5": 0.0314,
+            "10": 0.0923,
+            "20": 0.1772
+          },
+          "runs": [
+            0.01304,
+            0.00809,
+            0.00866,
+            0.00446,
+            0.01271
+          ],
+          "n_transitions_added": 450,
+          "beats_base": false,
+          "beats_random": false
+        },
+        "dream_uncertainty": {
+          "object_pos_rmse_m_mean": 0.00939,
+          "object_pos_rmse_m_std": 0.00319,
+          "physical_state_rmse_mean": 0.03564,
+          "multistep_object_rmse_m": {
+            "1": 0.0062,
+            "5": 0.0314,
+            "10": 0.0923,
+            "20": 0.1772
+          },
+          "runs": [
+            0.01304,
+            0.00809,
+            0.00866,
+            0.00446,
+            0.01271
+          ],
+          "n_transitions_added": 450,
+          "beats_base": false,
+          "beats_random": false
+        },
+        "oracle": {
+          "object_pos_rmse_m_mean": 0.00509,
+          "object_pos_rmse_m_std": 0.00173,
+          "physical_state_rmse_mean": 0.03237,
+          "multistep_object_rmse_m": {
+            "1": 0.0027,
+            "5": 0.0184,
+            "10": 0.0643,
+            "20": 0.0997
+          },
+          "runs": [
+            0.00412,
+            0.00417,
+            0.00856,
+            0.00427,
+            0.00435
+          ],
+          "n_transitions_added": 450,
+          "beats_base": true,
+          "beats_random": true
+        },
+        "imagined_harmful": {
+          "object_pos_rmse_m_mean": 0.01146,
+          "object_pos_rmse_m_std": 0.00172,
+          "physical_state_rmse_mean": 0.0351,
+          "multistep_object_rmse_m": {
+            "1": 0.0119,
+            "5": 0.0336,
+            "10": 0.0558,
+            "20": 0.2584
+          },
+          "runs": [
+            0.01001,
+            0.01135,
+            0.01175,
+            0.01452,
+            0.00966
+          ],
+          "n_transitions_added": 5,
+          "imagined_transitions_dropped_nonfinite": 445,
+          "beats_base": false,
+          "beats_random": false
+        }
+      },
+      "rollback_decisions": {
+        "random": "rollback_to_base",
+        "dream_composite": "rollback_to_base",
+        "dream_uncertainty": "rollback_to_base",
+        "oracle": "adopt",
+        "imagined_harmful": "rollback_to_base"
+      },
+      "pool_size": 150
+    }
+  },
+  "wall_seconds": 46.35,
+  "gate_passed": true
+}

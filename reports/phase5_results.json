@@ -1,0 +1,70 @@
+{
+  "phase": 5,
+  "dataset_id": "fetchpush_scripted_phase1",
+  "timestamp_utc": "2026-10-27T11:21:06+00:00",
+  "ensemble_size": 5,
+  "pool_size": 120,
+  "budget_K": 20,
+  "random_seeds": 10,
+  "info_cap_m": 1.0,
+  "metric": "mean object-position error of selected dreams (higher=found more model errors); recall of the top-K truly-most-wrong dreams",
+  "n_plausible_dreams": 100,
+  "strategies_all_dreams": {
+    "uncertainty": {
+      "mean_selected_info": 1.0,
+      "recall_of_high_error": 1.0,
+      "beats_random": true
+    },
+    "coverage": {
+      "mean_selected_info": 0.2792,
+      "recall_of_high_error": 0.15,
+      "beats_random": false
+    },
+    "composite": {
+      "mean_selected_info": 0.7432,
+      "recall_of_high_error": 0.7,
+      "beats_random": true
+    },
+    "oracle_ceiling": {
+      "mean_selected_info": 1.0,
+      "recall_of_high_error": 1.0,
+      "beats_random": true
+    },
+    "random": {
+      "mean_selected_info": 0.2095,
+      "mean_selected_info_std": 0.0794,
+      "recall_of_high_error": 0.145,
+      "seeds": 10
+    }
+  },
+  "strategies_plausible_only": {
+    "uncertainty": {
+      "mean_selected_info": 0.0793,
+      "recall_of_high_error": 0.2,
+      "beats_random": false
+    },
+    "coverage": {
+      "mean_selected_info": 0.1398,
+      "recall_of_high_error": 0.4,
+      "beats_random": true
+    },
+    "composite": {
+      "mean_selected_info": 0.1463,
+      "recall_of_high_error": 0.45,
+      "beats_random": true
+    },
+    "oracle_ceiling": {
+      "mean_selected_info": 0.1886,
+      "recall_of_high_error": 1.0,
+      "beats_random": true
+    },
+    "random": {
+      "mean_selected_info": 0.0676,
+      "mean_selected_info_std": 0.0128,
+      "recall_of_high_error": 0.145,
+      "seeds": 10
+    }
+  },
+  "wall_seconds": 8.02,
+  "gate_passed": true
+}

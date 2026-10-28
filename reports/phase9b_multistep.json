@@ -1,0 +1,163 @@
+{
+  "phase": "9B",
+  "stage": "multistep_rollout_training",
+  "dataset_id": "fetchslide_phase8",
+  "env": "FetchSlide-v4",
+  "timestamp_utc": "2026-10-27T19:12:46+00:00",
+  "provenance": {
+    "git_commit": "9ad92c5cee362873db120955d644b7d5248e02d9",
+    "device": "cuda",
+    "n_seeds": 3,
+    "epochs": 400,
+    "patience": 40,
+    "rollout_horizons": [
+      3,
+      5,
+      10
+    ],
+    "single_factor": "training objective horizon K (loss), all else fixed"
+  },
+  "metric": "held-out object-position RMSE (m), lower=better; mean +/- std over seeds",
+  "conditions": {
+    "onestep_K1": {
+      "one_step_object_rmse_m_mean": 0.00395,
+      "one_step_object_rmse_m_std": 8e-05,
+      "one_step_physical_rmse_mean": 0.02503,
+      "multistep_object_rmse_m_mean": {
+        "1": 0.0016,
+        "5": 0.0217,
+        "10": 0.0587,
+        "15": 0.0919,
+        "20": 0.1192
+      },
+      "multistep_object_rmse_m_std": {
+        "1": 0.0002,
+        "5": 0.0018,
+        "10": 0.0057,
+        "15": 0.0084,
+        "20": 0.0083
+      },
+      "persistence_multistep": {
+        "1": 0.0,
+        "5": 0.0217,
+        "10": 0.0675,
+        "15": 0.1118,
+        "20": 0.1569
+      },
+      "train_seconds_mean": 1.49,
+      "epochs_mean": 43.7
+    },
+    "rollout_K3": {
+      "one_step_object_rmse_m_mean": 0.0046,
+      "one_step_object_rmse_m_std": 0.00013,
+      "one_step_physical_rmse_mean": 0.02805,
+      "multistep_object_rmse_m_mean": {
+        "1": 0.0052,
+        "5": 0.017,
+        "10": 0.0357,
+        "15": 0.058,
+        "20": 0.086
+      },
+      "multistep_object_rmse_m_std": {
+        "1": 0.0005,
+        "5": 0.0002,
+        "10": 0.0017,
+        "15": 0.0038,
+        "20": 0.0092
+      },
+      "persistence_multistep": {
+        "1": 0.0,
+        "5": 0.0217,
+        "10": 0.0675,
+        "15": 0.1118,
+        "20": 0.1569
+      },
+      "train_seconds_mean": 10.72,
+      "epochs_mean": 149.3
+    },
+    "rollout_K5": {
+      "one_step_object_rmse_m_mean": 0.0045,
+      "one_step_object_rmse_m_std": 9e-05,
+      "one_step_physical_rmse_mean": 0.02849,
+      "multistep_object_rmse_m_mean": {
+        "1": 0.0044,
+        "5": 0.0161,
+        "10": 0.0314,
+        "15": 0.0469,
+        "20": 0.0653
+      },
+      "multistep_object_rmse_m_std": {
+        "1": 0.0007,
+        "5": 0.002,
+        "10": 0.0026,
+        "15": 0.0021,
+        "20": 0.0024
+      },
+      "persistence_multistep": {
+        "1": 0.0,
+        "5": 0.0217,
+        "10": 0.0675,
+        "15": 0.1118,
+        "20": 0.1569
+      },
+      "train_seconds_mean": 29.6,
+      "epochs_mean": 256.0
+    },
+    "rollout_K10": {
+      "one_step_object_rmse_m_mean": 0.00478,
+      "one_step_object_rmse_m_std": 0.00018,
+      "one_step_physical_rmse_mean": 0.0268,
+      "multistep_object_rmse_m_mean": {
+        "1": 0.004,
+        "5": 0.0153,
+        "10": 0.0262,
+        "15": 0.0374,
+        "20": 0.0519
+      },
+      "multistep_object_rmse_m_std": {
+        "1": 0.0016,
+        "5": 0.0012,
+        "10": 0.0014,
+        "15": 0.0018,
+        "20": 0.0027
+      },
+      "persistence_multistep": {
+        "1": 0.0,
+        "5": 0.0217,
+        "10": 0.0675,
+        "15": 0.1118,
+        "20": 0.1569
+      },
+      "train_seconds_mean": 36.68,
+      "epochs_mean": 200.3
+    }
+  },
+  "verdicts_vs_baseline": {
+    "rollout_K3": {
+      "h10_improvement_m": 0.023,
+      "h20_improvement_m": 0.0332,
+      "h20_improves_beyond_spread": true,
+      "one_step_regression_m": 0.00065,
+      "one_step_regressed_beyond_spread": true
+    },
+    "rollout_K5": {
+      "h10_improvement_m": 0.0273,
+      "h20_improvement_m": 0.0539,
+      "h20_improves_beyond_spread": true,
+      "one_step_regression_m": 0.00055,
+      "one_step_regressed_beyond_spread": true
+    },
+    "rollout_K10": {
+      "h10_improvement_m": 0.0325,
+      "h20_improvement_m": 0.0673,
+      "h20_improves_beyond_spread": true,
+      "one_step_regression_m": 0.00083,
+      "one_step_regressed_beyond_spread": true
+    }
+  },
+  "best_multistep_condition": "rollout_K10",
+  "best_improves_h20_beyond_spread": true,
+  "best_no_one_step_regression": false,
+  "wall_seconds": 240.79,
+  "gate_B_tested": true
+}

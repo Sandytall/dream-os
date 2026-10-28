@@ -1,0 +1,612 @@
+{
+  "phase": "9F",
+  "stage": "damping_intervention",
+  "dataset_id": "fetchslide_phase8",
+  "env": "FetchSlide-v4",
+  "timestamp_utc": "2026-10-28T06:42:52+00:00",
+  "provenance": {
+    "git_commit": "9ad92c5cee362873db120955d644b7d5248e02d9",
+    "device": "cuda",
+    "n_seeds": 3,
+    "epochs": 400,
+    "patience": 40,
+    "rollout_K": 5,
+    "alpha_grid": [
+      0.0,
+      0.1,
+      0.2,
+      0.3,
+      0.4,
+      0.5,
+      0.6,
+      0.7,
+      0.8,
+      0.9
+    ],
+    "baseline_checkpoint": "world_model/checkpoints/fetchslide_rollout_k5.pt",
+    "splits": {
+      "train": 168,
+      "val": 36,
+      "test_heldout": 36
+    }
+  },
+  "hypothesis": "free-slide under-travel is excess multiplicative velocity decay correctable by a bounded momentum re-injection on the object channel (alpha in [0,1), zero at rest, geometric-stable)",
+  "intervention": "obj_pred'_{k+1} = obj_pred_{k+1} + alpha * prev_object_displacement; MLP never sees the velocity (no amplification); alpha calibrated on val free-slide endpoint RMSE",
+  "primary_metric": "held-out free-slide endpoint object RMSE (m), mean over seeds",
+  "pre_registered_thresholds": {
+    "primary_rel_min": 0.05,
+    "regress_tol_m": 0.002,
+    "stability_max_ratio": 1.5,
+    "rest_max_diff_m": 0.001
+  },
+  "alpha_per_seed": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "aggregate": {
+    "free_slide_endpoint_rmse_m": {
+      "baseline_mean": 0.0936,
+      "baseline_std": 0.0041,
+      "candidate_mean": 0.0936,
+      "candidate_std": 0.0041,
+      "drop_m": 0.0,
+      "rel_improve": 0.0
+    },
+    "free_slide_signed_bias_m": {
+      "baseline": -0.0522,
+      "candidate": -0.0522
+    },
+    "free_slide_pointwise_rmse_m": {
+      "baseline": 0.0496,
+      "candidate": 0.0496
+    },
+    "full_episode_multistep_m": {
+      "baseline_h10": 0.0314,
+      "candidate_h10": 0.0314,
+      "baseline_h20": 0.0653,
+      "candidate_h20": 0.0653
+    },
+    "regime_endpoint_rmse_m": {
+      "baseline_quasi": 0.0322,
+      "candidate_quasi": 0.0322,
+      "baseline_contact": 0.0566,
+      "candidate_contact": 0.0566
+    },
+    "stability": {
+      "candidate_max_step_speed_m": 0.126,
+      "baseline_max_step_speed_m": 0.126,
+      "rest_state_max_diff_m": 0.0
+    }
+  },
+  "gate": {
+    "primary_ok": false,
+    "noregress_overall": true,
+    "noregress_regime": true,
+    "stable": true,
+    "rest_ok": true,
+    "accept": false
+  },
+  "verdict": "evidence_against_constant_damping_correction",
+  "interpretation": "A calibrated constant momentum correction did NOT reduce held-out free-slide endpoint error beyond threshold (bias may shift while endpoint/pointwise error does not). The under-travel is not a constant multiplicative damping offset; consistent with partial observability of the absolute velocity (the baseline's own displacement, which alpha scales, is itself unreliable). Damping is NOT excluded as a physical factor -- only the constant-correction form is.",
+  "hypothesis_ledger": {
+    "H_friction/H_damp": "constant-correction form contradicted; physical damping not excluded",
+    "H_velocity": "fix via object channel again insufficient (9E unstable input, 9F constant correction) -> partial-observability of absolute velocity strengthened",
+    "H_horizon": "contradicted (Phase 9E: bias does not vanish with K)",
+    "H_coverage": "unresolved (OOD->error weak, 0.22)"
+  },
+  "recommended_next_experiment": "If rejected: the two independent routes (9E velocity input, 9F momentum correction) now both fail to fix the under-travel via the OBJECT channel alone, strengthening partial-observability of absolute velocity as the cause. Highest-value next test: a STABLE state augmentation that supplies absolute velocity WITHOUT the 9E instability (e.g. a filtered/clipped velocity input, or an input-delta formulation trained with the rollout loss and a rest-state regularizer), evaluated with this same protocol. Otherwise accept the measured ceiling on a Markov state-only FetchSlide model and report it.",
+  "per_seed": [
+    {
+      "seed": 0,
+      "alpha": 0.0,
+      "alpha_sweep": {
+        "0.0": 0.07308,
+        "0.1": 0.07658,
+        "0.2": 0.08949,
+        "0.3": 0.11362,
+        "0.4": 0.15089,
+        "0.5": 0.20455,
+        "0.6": 0.28136,
+        "0.7": 0.39323,
+        "0.8": 0.56097,
+        "0.9": 0.81877
+      },
+      "baseline": {
+        "freeslide": {
+          "n": 354,
+          "endpoint_object_rmse_m": 0.094,
+          "signed_travel_bias_m": -0.0572,
+          "abs_travel_mag_bias_m": 0.0668,
+          "pointwise_traj_rmse_m": 0.0495,
+          "per_horizon_pointwise_m": [
+            0.0065,
+            0.0133,
+            0.0221,
+            0.0322,
+            0.0434,
+            0.0549,
+            0.0659,
+            0.0765,
+            0.0857,
+            0.094
+          ],
+          "real_speed_curve": [
+            0.0231,
+            0.0252,
+            0.0277,
+            0.0303,
+            0.0325,
+            0.0325,
+            0.0311,
+            0.029,
+            0.0266,
+            0.0239
+          ],
+          "pred_speed_curve": [
+            0.0223,
+            0.0217,
+            0.0223,
+            0.0234,
+            0.0245,
+            0.0244,
+            0.0235,
+            0.0227,
+            0.022,
+            0.0213
+          ],
+          "groups": {
+            "init_vel": {
+              "low_endpoint_rmse_m": 0.0842,
+              "high_endpoint_rmse_m": 0.1038,
+              "split_median": 0.0216
+            },
+            "displacement": {
+              "low_endpoint_rmse_m": 0.07,
+              "high_endpoint_rmse_m": 0.1181,
+              "split_median": 0.2492
+            }
+          }
+        },
+        "multistep": {
+          "1": 0.0051,
+          "5": 0.0187,
+          "10": 0.0342,
+          "15": 0.0496,
+          "20": 0.0678
+        },
+        "max_step_speed": 0.126,
+        "regime": {
+          "quasi_static": 0.0324,
+          "contact_driven": 0.06,
+          "free_sliding": 0.094
+        }
+      },
+      "candidate": {
+        "freeslide": {
+          "n": 354,
+          "endpoint_object_rmse_m": 0.094,
+          "signed_travel_bias_m": -0.0572,
+          "abs_travel_mag_bias_m": 0.0668,
+          "pointwise_traj_rmse_m": 0.0495,
+          "per_horizon_pointwise_m": [
+            0.0065,
+            0.0133,
+            0.0221,
+            0.0322,
+            0.0434,
+            0.0549,
+            0.0659,
+            0.0765,
+            0.0857,
+            0.094
+          ],
+          "real_speed_curve": [
+            0.0231,
+            0.0252,
+            0.0277,
+            0.0303,
+            0.0325,
+            0.0325,
+            0.0311,
+            0.029,
+            0.0266,
+            0.0239
+          ],
+          "pred_speed_curve": [
+            0.0223,
+            0.0217,
+            0.0223,
+            0.0234,
+            0.0245,
+            0.0244,
+            0.0235,
+            0.0227,
+            0.022,
+            0.0213
+          ],
+          "groups": {
+            "init_vel": {
+              "low_endpoint_rmse_m": 0.0842,
+              "high_endpoint_rmse_m": 0.1038,
+              "split_median": 0.0216
+            },
+            "displacement": {
+              "low_endpoint_rmse_m": 0.07,
+              "high_endpoint_rmse_m": 0.1181,
+              "split_median": 0.2492
+            }
+          }
+        },
+        "multistep": {
+          "1": 0.0051,
+          "5": 0.0187,
+          "10": 0.0342,
+          "15": 0.0496,
+          "20": 0.0678
+        },
+        "max_step_speed": 0.126,
+        "regime": {
+          "quasi_static": 0.0324,
+          "contact_driven": 0.06,
+          "free_sliding": 0.094
+        },
+        "rest_state_max_diff_m": 0.0
+      }
+    },
+    {
+      "seed": 1,
+      "alpha": 0.0,
+      "alpha_sweep": {
+        "0.0": 0.0689,
+        "0.1": 0.07375,
+        "0.2": 0.08906,
+        "0.3": 0.11527,
+        "0.4": 0.15405,
+        "0.5": 0.20937,
+        "0.6": 0.2869,
+        "0.7": 0.39799,
+        "0.8": 0.56123,
+        "0.9": 0.80861
+      },
+      "baseline": {
+        "freeslide": {
+          "n": 354,
+          "endpoint_object_rmse_m": 0.0883,
+          "signed_travel_bias_m": -0.0483,
+          "abs_travel_mag_bias_m": 0.0622,
+          "pointwise_traj_rmse_m": 0.0471,
+          "per_horizon_pointwise_m": [
+            0.0069,
+            0.0134,
+            0.0222,
+            0.0319,
+            0.0419,
+            0.0521,
+            0.062,
+            0.0719,
+            0.0807,
+            0.0883
+          ],
+          "real_speed_curve": [
+            0.0231,
+            0.0252,
+            0.0277,
+            0.0303,
+            0.0325,
+            0.0325,
+            0.0311,
+            0.029,
+            0.0266,
+            0.0239
+          ],
+          "pred_speed_curve": [
+            0.0217,
+            0.0221,
+            0.0236,
+            0.0253,
+            0.0266,
+            0.0265,
+            0.0251,
+            0.0236,
+            0.0226,
+            0.0208
+          ],
+          "groups": {
+            "init_vel": {
+              "low_endpoint_rmse_m": 0.0801,
+              "high_endpoint_rmse_m": 0.0966,
+              "split_median": 0.0216
+            },
+            "displacement": {
+              "low_endpoint_rmse_m": 0.0617,
+              "high_endpoint_rmse_m": 0.1149,
+              "split_median": 0.2492
+            }
+          }
+        },
+        "multistep": {
+          "1": 0.0034,
+          "5": 0.016,
+          "10": 0.032,
+          "15": 0.0464,
+          "20": 0.0659
+        },
+        "max_step_speed": 0.097,
+        "regime": {
+          "quasi_static": 0.0339,
+          "contact_driven": 0.0571,
+          "free_sliding": 0.0883
+        }
+      },
+      "candidate": {
+        "freeslide": {
+          "n": 354,
+          "endpoint_object_rmse_m": 0.0883,
+          "signed_travel_bias_m": -0.0483,
+          "abs_travel_mag_bias_m": 0.0622,
+          "pointwise_traj_rmse_m": 0.0471,
+          "per_horizon_pointwise_m": [
+            0.0069,
+            0.0134,
+            0.0222,
+            0.0319,
+            0.0419,
+            0.0521,
+            0.062,
+            0.0719,
+            0.0807,
+            0.0883
+          ],
+          "real_speed_curve": [
+            0.0231,
+            0.0252,
+            0.0277,
+            0.0303,
+            0.0325,
+            0.0325,
+            0.0311,
+            0.029,
+            0.0266,
+            0.0239
+          ],
+          "pred_speed_curve": [
+            0.0217,
+            0.0221,
+            0.0236,
+            0.0253,
+            0.0266,
+            0.0265,
+            0.0251,
+            0.0236,
+            0.0226,
+            0.0208
+          ],
+          "groups": {
+            "init_vel": {
+              "low_endpoint_rmse_m": 0.0801,
+              "high_endpoint_rmse_m": 0.0966,
+              "split_median": 0.0216
+            },
+            "displacement": {
+              "low_endpoint_rmse_m": 0.0617,
+              "high_endpoint_rmse_m": 0.1149,
+              "split_median": 0.2492
+            }
+          }
+        },
+        "multistep": {
+          "1": 0.0034,
+          "5": 0.016,
+          "10": 0.032,
+          "15": 0.0464,
+          "20": 0.0659
+        },
+        "max_step_speed": 0.097,
+        "regime": {
+          "quasi_static": 0.0339,
+          "contact_driven": 0.0571,
+          "free_sliding": 0.0883
+        },
+        "rest_state_max_diff_m": 0.0
+      }
+    },
+    {
+      "seed": 2,
+      "alpha": 0.0,
+      "alpha_sweep": {
+        "0.0": 0.06166,
+        "0.1": 0.06807,
+        "0.2": 0.08565,
+        "0.3": 0.11454,
+        "0.4": 0.15634,
+        "0.5": 0.21434,
+        "0.6": 0.29569,
+        "0.7": 0.41278,
+        "0.8": 0.586,
+        "0.9": 0.84893
+      },
+      "baseline": {
+        "freeslide": {
+          "n": 354,
+          "endpoint_object_rmse_m": 0.0984,
+          "signed_travel_bias_m": -0.0511,
+          "abs_travel_mag_bias_m": 0.0686,
+          "pointwise_traj_rmse_m": 0.0522,
+          "per_horizon_pointwise_m": [
+            0.0066,
+            0.014,
+            0.0235,
+            0.0347,
+            0.0466,
+            0.0583,
+            0.0697,
+            0.0803,
+            0.0897,
+            0.0984
+          ],
+          "real_speed_curve": [
+            0.0231,
+            0.0252,
+            0.0277,
+            0.0303,
+            0.0325,
+            0.0325,
+            0.0311,
+            0.029,
+            0.0266,
+            0.0239
+          ],
+          "pred_speed_curve": [
+            0.0223,
+            0.0219,
+            0.0231,
+            0.0247,
+            0.0263,
+            0.0264,
+            0.0253,
+            0.024,
+            0.0226,
+            0.0201
+          ],
+          "groups": {
+            "init_vel": {
+              "low_endpoint_rmse_m": 0.0865,
+              "high_endpoint_rmse_m": 0.1104,
+              "split_median": 0.0216
+            },
+            "displacement": {
+              "low_endpoint_rmse_m": 0.074,
+              "high_endpoint_rmse_m": 0.1229,
+              "split_median": 0.2492
+            }
+          }
+        },
+        "multistep": {
+          "1": 0.0047,
+          "5": 0.0137,
+          "10": 0.028,
+          "15": 0.0446,
+          "20": 0.0621
+        },
+        "max_step_speed": 0.105,
+        "regime": {
+          "quasi_static": 0.0302,
+          "contact_driven": 0.0526,
+          "free_sliding": 0.0984
+        }
+      },
+      "candidate": {
+        "freeslide": {
+          "n": 354,
+          "endpoint_object_rmse_m": 0.0984,
+          "signed_travel_bias_m": -0.0511,
+          "abs_travel_mag_bias_m": 0.0686,
+          "pointwise_traj_rmse_m": 0.0522,
+          "per_horizon_pointwise_m": [
+            0.0066,
+            0.014,
+            0.0235,
+            0.0347,
+            0.0466,
+            0.0583,
+            0.0697,
+            0.0803,
+            0.0897,
+            0.0984
+          ],
+          "real_speed_curve": [
+            0.0231,
+            0.0252,
+            0.0277,
+            0.0303,
+            0.0325,
+            0.0325,
+            0.0311,
+            0.029,
+            0.0266,
+            0.0239
+          ],
+          "pred_speed_curve": [
+            0.0223,
+            0.0219,
+            0.0231,
+            0.0247,
+            0.0263,
+            0.0264,
+            0.0253,
+            0.024,
+            0.0226,
+            0.0201
+          ],
+          "groups": {
+            "init_vel": {
+              "low_endpoint_rmse_m": 0.0865,
+              "high_endpoint_rmse_m": 0.1104,
+              "split_median": 0.0216
+            },
+            "displacement": {
+              "low_endpoint_rmse_m": 0.074,
+              "high_endpoint_rmse_m": 0.1229,
+              "split_median": 0.2492
+            }
+          }
+        },
+        "multistep": {
+          "1": 0.0047,
+          "5": 0.0137,
+          "10": 0.028,
+          "15": 0.0446,
+          "20": 0.0621
+        },
+        "max_step_speed": 0.105,
+        "regime": {
+          "quasi_static": 0.0302,
+          "contact_driven": 0.0526,
+          "free_sliding": 0.0984
+        },
+        "rest_state_max_diff_m": 0.0
+      }
+    }
+  ],
+  "velocity_decay_curves_seed0": {
+    "real": [
+      0.0231,
+      0.0252,
+      0.0277,
+      0.0303,
+      0.0325,
+      0.0325,
+      0.0311,
+      0.029,
+      0.0266,
+      0.0239
+    ],
+    "baseline": [
+      0.0223,
+      0.0217,
+      0.0223,
+      0.0234,
+      0.0245,
+      0.0244,
+      0.0235,
+      0.0227,
+      0.022,
+      0.0213
+    ],
+    "candidate": [
+      0.0223,
+      0.0217,
+      0.0223,
+      0.0234,
+      0.0245,
+      0.0244,
+      0.0235,
+      0.0227,
+      0.022,
+      0.0213
+    ]
+  },
+  "figure": "reports/figures/phase9f_velocity_decay.svg",
+  "wall_seconds": 95.84
+}

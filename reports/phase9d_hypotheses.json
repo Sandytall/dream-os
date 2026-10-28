@@ -1,0 +1,254 @@
+{
+  "phase": "9D",
+  "stage": "hypotheses",
+  "dataset_id": "fetchslide_phase8",
+  "env": "FetchSlide-v4",
+  "timestamp_utc": "2026-10-28T02:54:21+00:00",
+  "provenance": {
+    "git_commit": "9ad92c5cee362873db120955d644b7d5248e02d9",
+    "device": "cuda",
+    "rollout_K": 5,
+    "checkpoint": "world_model/checkpoints/fetchslide_rollout_k5.pt"
+  },
+  "failure": "free-sliding puck under-travel: model predicts 0.208 m vs real 0.265 m (bias -0.057 m); worst at gripper-far/high-travel (0.116 m); scales with puck speed",
+  "evidence_source": "reports/phase9c_failure_atlas.json",
+  "hypotheses": [
+    {
+      "id": "H_friction",
+      "statement": "The learned dynamics over-estimate the puck's deceleration (too much friction/damping), so the imagined puck stops earlier than the real one.",
+      "motivating_observations": [
+        "free-slide under-travel bias -0.057 m",
+        "error scales with puck speed (0.034->0.092)"
+      ],
+      "supporting_evidence": [
+        "signed travel bias is negative in BOTH baseline (-0.071) and rollout (-0.057)"
+      ],
+      "contradicting_evidence": [
+        "rollout training (longer objective) reduced the bias, so part of it is horizon-related"
+      ],
+      "predicted_consequence": "predicted per-step object speed decays faster than real even at short horizon; a better velocity input would NOT fix it",
+      "discriminating_experiments": [
+        "E_speed_decay",
+        "E_abs_velocity_feature",
+        "E_horizon_sweep"
+      ],
+      "expected_cost": "covered by the experiments above",
+      "status": "unresolved",
+      "result": "one-step speed ratio 0.967 (>0.9): no strong one-step over-damping, so a one-step friction bias is NOT supported; a residual multi-step over-damping cannot be ruled out"
+    },
+    {
+      "id": "H_velocity",
+      "statement": "The input lacks an adequate ABSOLUTE object-velocity signal: object_velp (cols 14:17) is stored relative to the gripper, so once the gripper decelerates/leaves the model cannot represent the puck's remaining momentum and defaults to stopping.",
+      "motivating_observations": [
+        "object_velp verified gripper-relative in Phase 9A (only z-axis correlates with raw displacement)",
+        "failure concentrated where gripper is FAR (0.116 m) -- exactly where relative != absolute velocity"
+      ],
+      "supporting_evidence": [
+        "worst failure cell is gripper-far/high-travel",
+        "regime is high-uncertainty not high-OOD (rho 0.66 vs 0.22) -> representation not coverage"
+      ],
+      "contradicting_evidence": [
+        "not yet tested directly; awaits E_abs_velocity_feature"
+      ],
+      "predicted_consequence": "adding an absolute object-velocity feature substantially reduces the free-slide under-travel bias",
+      "discriminating_experiments": [
+        "E_abs_velocity_feature",
+        "E_speed_decay",
+        "E_horizon_sweep"
+      ],
+      "expected_cost": "one retrain",
+      "status": "open",
+      "result": "gripper is already far at free-slide start (0.144 m) and keeps receding; one-step ok but the speed gap opens as the model propagates its own state -> consistent with a velocity-representation gap. Decisive test: E_abs_velocity_feature (pending)"
+    },
+    {
+      "id": "H_coverage",
+      "statement": "Fast free-sliding states are under-represented in the training data, so the model extrapolates them toward 'stopped'.",
+      "motivating_observations": [
+        "free-slide is the minority regime (24% of windows)"
+      ],
+      "supporting_evidence": [],
+      "contradicting_evidence": [
+        "OOD ranks error only weakly (Spearman 0.215) and free-slide windows are NOT strongly out-of-distribution -- evidence AGAINST coverage as the primary cause"
+      ],
+      "predicted_consequence": "adding verified free-slide real data reduces the bias; bias concentrated in high-OOD windows",
+      "discriminating_experiments": [
+        "E_add_freeslide_data",
+        "E_speed_decay"
+      ],
+      "expected_cost": "data collection + retrain",
+      "status": "open",
+      "result": "OOD->error weak (0.215) argues against coverage; awaits E_add_freeslide_data"
+    },
+    {
+      "id": "H_horizon",
+      "statement": "The failure is purely a multi-step propagation artifact of the training objective's horizon; the one-step dynamics are fine.",
+      "motivating_observations": [
+        "rollout training (K>1) reduced the bias from -0.071 to -0.057"
+      ],
+      "supporting_evidence": [
+        "bias decreased when the objective horizon increased (baseline->rollout)"
+      ],
+      "contradicting_evidence": [
+        "bias persists at -0.057 even with rollout training -- a residual remains"
+      ],
+      "predicted_consequence": "one-step predicted object speed is ~correct; the gap opens only with rollout depth and vanishes as K->full",
+      "discriminating_experiments": [
+        "E_speed_decay",
+        "E_horizon_sweep"
+      ],
+      "expected_cost": "reuse 9B retrains",
+      "status": "open",
+      "result": "speed gap grows with horizon (one-step 0.967 -> late 0.795); consistent, BUT the travel bias persisted (-0.057) under rollout training, so horizon alone is incomplete"
+    }
+  ],
+  "experiments": [
+    {
+      "name": "E_speed_decay",
+      "description": "predicted vs real per-step object speed on held-out free-slide windows",
+      "observations_needed": [
+        "per-step real object speed",
+        "per-step predicted object speed",
+        "gripper-object distance over the window"
+      ],
+      "predicted_outcome": {
+        "H_friction": "pred speed below real from the FIRST step (one-step over-damping)",
+        "H_velocity": "one-step may be low when gripper co-moves; gap widens after gripper leaves",
+        "H_coverage": "gap concentrated in high-OOD windows",
+        "H_horizon": "one-step speed ~correct; gap appears only with rollout depth"
+      },
+      "expected_cost": "cheap (reuse held-out rollouts, no retrain)",
+      "status": "run",
+      "result": {
+        "n_free_sliding": 358,
+        "real_speed_curve": [
+          0.0228,
+          0.0249,
+          0.0274,
+          0.03,
+          0.0324,
+          0.0324,
+          0.0311,
+          0.029,
+          0.0266,
+          0.024
+        ],
+        "pred_speed_curve": [
+          0.0221,
+          0.0215,
+          0.0221,
+          0.0232,
+          0.0244,
+          0.0244,
+          0.0235,
+          0.0226,
+          0.0219,
+          0.0212
+        ],
+        "grip_distance_curve": [
+          0.144,
+          0.15,
+          0.157,
+          0.167,
+          0.18,
+          0.195,
+          0.21,
+          0.225,
+          0.238,
+          0.248,
+          0.257
+        ],
+        "one_step_speed_ratio_pred_over_real": 0.967,
+        "late_step_speed_ratio_pred_over_real": 0.795,
+        "over_damped_at_one_step": false,
+        "conclusion": "over-damping is a multi-step effect, not one-step; live contenders are H_velocity and H_horizon, to be separated by E_abs_velocity_feature in Phase 9E/9G; strong one-step friction (H_friction) unsupported"
+      }
+    },
+    {
+      "name": "E_abs_velocity_feature",
+      "description": "retrain with an absolute object-velocity input (finite-difference) added; re-measure free-slide bias",
+      "observations_needed": [
+        "free-slide travel bias with vs without the absolute-velocity feature"
+      ],
+      "predicted_outcome": {
+        "H_friction": "bias ~unchanged (dynamics still over-damp)",
+        "H_velocity": "bias shrinks substantially",
+        "H_coverage": "bias ~unchanged",
+        "H_horizon": "bias ~unchanged (objective not changed)"
+      },
+      "expected_cost": "one retrain (~30 s GPU) + eval",
+      "status": "designed",
+      "result": null
+    },
+    {
+      "name": "E_horizon_sweep",
+      "description": "free-slide travel bias vs training rollout horizon K in {1,3,5,10}",
+      "observations_needed": [
+        "free-slide travel bias as a function of K"
+      ],
+      "predicted_outcome": {
+        "H_friction": "bias falls with K then plateaus above zero",
+        "H_velocity": "bias roughly constant in K",
+        "H_coverage": "bias roughly constant in K",
+        "H_horizon": "bias approaches zero as K grows (large, monotone)"
+      },
+      "expected_cost": "reuse Phase 9B retrains (~2 min)",
+      "status": "designed",
+      "result": null
+    },
+    {
+      "name": "E_add_freeslide_data",
+      "description": "acquire & verify additional real free-slide transitions, retrain, re-measure bias",
+      "observations_needed": [
+        "free-slide bias with vs without added free-slide coverage"
+      ],
+      "predicted_outcome": {
+        "H_friction": "bias ~unchanged",
+        "H_velocity": "bias ~unchanged",
+        "H_coverage": "bias shrinks",
+        "H_horizon": "bias ~unchanged"
+      },
+      "expected_cost": "data collection + verified-acquisition retrain (~minutes)",
+      "status": "designed",
+      "result": null
+    }
+  ],
+  "distinguishability": {
+    "H_friction|H_velocity": [
+      "E_speed_decay",
+      "E_abs_velocity_feature",
+      "E_horizon_sweep"
+    ],
+    "H_friction|H_coverage": [
+      "E_speed_decay",
+      "E_abs_velocity_feature",
+      "E_horizon_sweep",
+      "E_add_freeslide_data"
+    ],
+    "H_friction|H_horizon": [
+      "E_speed_decay",
+      "E_abs_velocity_feature",
+      "E_horizon_sweep"
+    ],
+    "H_velocity|H_coverage": [
+      "E_speed_decay",
+      "E_abs_velocity_feature",
+      "E_add_freeslide_data"
+    ],
+    "H_velocity|H_horizon": [
+      "E_speed_decay",
+      "E_abs_velocity_feature",
+      "E_horizon_sweep"
+    ],
+    "H_coverage|H_horizon": [
+      "E_speed_decay",
+      "E_abs_velocity_feature",
+      "E_horizon_sweep",
+      "E_add_freeslide_data"
+    ]
+  },
+  "indistinguishable_pairs": [],
+  "well_formed": true,
+  "validation_problems": [],
+  "gate_C_hypotheses_operationalized": true,
+  "wall_seconds": 17.38
+}

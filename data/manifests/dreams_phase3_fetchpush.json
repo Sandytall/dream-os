@@ -1,0 +1,751 @@
+{
+  "batch_id": "phase3_fetchpush",
+  "n_dreams": 30,
+  "status": "predicted",
+  "dreams": [
+    {
+      "dream_id": "d00_toward_goal",
+      "status": "predicted",
+      "plausible": true,
+      "max_abs_predicted_state": 1.2579,
+      "start_ref": {
+        "dataset_id": "fetchpush_scripted_phase1",
+        "split": "test_heldout",
+        "episode": 14,
+        "t": 27
+      },
+      "start_obs_sha": "be48695f40e8ccbe",
+      "branch": {
+        "name": "toward_goal",
+        "kind": "scripted",
+        "angle": 0.0,
+        "seed": 100
+      },
+      "horizon": 20,
+      "model": {
+        "checkpoint": "world_model/checkpoints/fetchpush_scripted_phase1_dynamics.pt",
+        "sha256_16": "d9f5d114c6eae5ff"
+      },
+      "predicted_object_xy_disp_m": 0.2723
+    },
+    {
+      "dream_id": "d00_angle_left",
+      "status": "predicted",
+      "plausible": true,
+      "max_abs_predicted_state": 1.1862,
+      "start_ref": {
+        "dataset_id": "fetchpush_scripted_phase1",
+        "split": "test_heldout",
+        "episode": 14,
+        "t": 27
+      },
+      "start_obs_sha": "be48695f40e8ccbe",
+      "branch": {
+        "name": "angle_left",
+        "kind": "scripted",
+        "angle": 35.0,
+        "seed": 100
+      },
+      "horizon": 20,
+      "model": {
+        "checkpoint": "world_model/checkpoints/fetchpush_scripted_phase1_dynamics.pt",
+        "sha256_16": "d9f5d114c6eae5ff"
+      },
+      "predicted_object_xy_disp_m": 0.2632
+    },
+    {
+      "dream_id": "d00_angle_right",
+      "status": "predicted",
+      "plausible": true,
+      "max_abs_predicted_state": 1.3014,
+      "start_ref": {
+        "dataset_id": "fetchpush_scripted_phase1",
+        "split": "test_heldout",
+        "episode": 14,
+        "t": 27
+      },
+      "start_obs_sha": "be48695f40e8ccbe",
+      "branch": {
+        "name": "angle_right",
+        "kind": "scripted",
+        "angle": -35.0,
+        "seed": 100
+      },
+      "horizon": 20,
+      "model": {
+        "checkpoint": "world_model/checkpoints/fetchpush_scripted_phase1_dynamics.pt",
+        "sha256_16": "d9f5d114c6eae5ff"
+      },
+      "predicted_object_xy_disp_m": 0.2068
+    },
+    {
+      "dream_id": "d00_noop",
+      "status": "predicted",
+      "plausible": true,
+      "max_abs_predicted_state": 1.1862,
+      "start_ref": {
+        "dataset_id": "fetchpush_scripted_phase1",
+        "split": "test_heldout",
+        "episode": 14,
+        "t": 27
+      },
+      "start_obs_sha": "be48695f40e8ccbe",
+      "branch": {
+        "name": "noop",
+        "kind": "fixed",
+        "value": 0.0,
+        "seed": 100
+      },
+      "horizon": 20,
+      "model": {
+        "checkpoint": "world_model/checkpoints/fetchpush_scripted_phase1_dynamics.pt",
+        "sha256_16": "d9f5d114c6eae5ff"
+      },
+      "predicted_object_xy_disp_m": 0.0163
+    },
+    {
+      "dream_id": "d00_random",
+      "status": "predicted",
+      "plausible": false,
+      "max_abs_predicted_state": 134008.8281,
+      "start_ref": {
+        "dataset_id": "fetchpush_scripted_phase1",
+        "split": "test_heldout",
+        "episode": 14,
+        "t": 27
+      },
+      "start_obs_sha": "be48695f40e8ccbe",
+      "branch": {
+        "name": "random",
+        "kind": "random",
+        "seed": 100
+      },
+      "horizon": 20,
+      "model": {
+        "checkpoint": "world_model/checkpoints/fetchpush_scripted_phase1_dynamics.pt",
+        "sha256_16": "d9f5d114c6eae5ff"
+      },
+      "predicted_object_xy_disp_m": null
+    },
+    {
+      "dream_id": "d01_toward_goal",
+      "status": "predicted",
+      "plausible": true,
+      "max_abs_predicted_state": 1.8103,
+      "start_ref": {
+        "dataset_id": "fetchpush_scripted_phase1",
+        "split": "test_heldout",
+        "episode": 31,
+        "t": 15
+      },
+      "start_obs_sha": "8cc81f2165ef6778",
+      "branch": {
+        "name": "toward_goal",
+        "kind": "scripted",
+        "angle": 0.0,
+        "seed": 101
+      },
+      "horizon": 20,
+      "model": {
+        "checkpoint": "world_model/checkpoints/fetchpush_scripted_phase1_dynamics.pt",
+        "sha256_16": "d9f5d114c6eae5ff"
+      },
+      "predicted_object_xy_disp_m": 0.0518
+    },
+    {
+      "dream_id": "d01_angle_left",
+      "status": "predicted",
+      "plausible": true,
+      "max_abs_predicted_state": 1.8097,
+      "start_ref": {
+        "dataset_id": "fetchpush_scripted_phase1",
+        "split": "test_heldout",
+        "episode": 31,
+        "t": 15
+      },
+      "start_obs_sha": "8cc81f2165ef6778",
+      "branch": {
+        "name": "angle_left",
+        "kind": "scripted",
+        "angle": 35.0,
+        "seed": 101
+      },
+      "horizon": 20,
+      "model": {
+        "checkpoint": "world_model/checkpoints/fetchpush_scripted_phase1_dynamics.pt",
+        "sha256_16": "d9f5d114c6eae5ff"
+      },
+      "predicted_object_xy_disp_m": 0.0333
+    },
+    {
+      "dream_id": "d01_angle_right",
+      "status": "predicted",
+      "plausible": true,
+      "max_abs_predicted_state": 1.8103,
+      "start_ref": {
+        "dataset_id": "fetchpush_scripted_phase1",
+        "split": "test_heldout",
+        "episode": 31,
+        "t": 15
+      },
+      "start_obs_sha": "8cc81f2165ef6778",
+      "branch": {
+        "name": "angle_right",
+        "kind": "scripted",
+        "angle": -35.0,
+        "seed": 101
+      },
+      "horizon": 20,
+      "model": {
+        "checkpoint": "world_model/checkpoints/fetchpush_scripted_phase1_dynamics.pt",
+        "sha256_16": "d9f5d114c6eae5ff"
+      },
+      "predicted_object_xy_disp_m": 0.0566
+    },
+    {
+      "dream_id": "d01_noop",
+      "status": "predicted",
+      "plausible": true,
+      "max_abs_predicted_state": 1.8065,
+      "start_ref": {
+        "dataset_id": "fetchpush_scripted_phase1",
+        "split": "test_heldout",
+        "episode": 31,
+        "t": 15
+      },
+      "start_obs_sha": "8cc81f2165ef6778",
+      "branch": {
+        "name": "noop",
+        "kind": "fixed",
+        "value": 0.0,
+        "seed": 101
+      },
+      "horizon": 20,
+      "model": {
+        "checkpoint": "world_model/checkpoints/fetchpush_scripted_phase1_dynamics.pt",
+        "sha256_16": "d9f5d114c6eae5ff"
+      },
+      "predicted_object_xy_disp_m": 0.3217
+    },
+    {
+      "dream_id": "d01_random",
+      "status": "predicted",
+      "plausible": false,
+      "max_abs_predicted_state": 81699.5312,
+      "start_ref": {
+        "dataset_id": "fetchpush_scripted_phase1",
+        "split": "test_heldout",
+        "episode": 31,
+        "t": 15
+      },
+      "start_obs_sha": "8cc81f2165ef6778",
+      "branch": {
+        "name": "random",
+        "kind": "random",
+        "seed": 101
+      },
+      "horizon": 20,
+      "model": {
+        "checkpoint": "world_model/checkpoints/fetchpush_scripted_phase1_dynamics.pt",
+        "sha256_16": "d9f5d114c6eae5ff"
+      },
+      "predicted_object_xy_disp_m": null
+    },
+    {
+      "dream_id": "d02_toward_goal",
+      "status": "predicted",
+      "plausible": true,
+      "max_abs_predicted_state": 1.811,
+      "start_ref": {
+        "dataset_id": "fetchpush_scripted_phase1",
+        "split": "test_heldout",
+        "episode": 33,
+        "t": 18
+      },
+      "start_obs_sha": "7d512edf11f5f1bb",
+      "branch": {
+        "name": "toward_goal",
+        "kind": "scripted",
+        "angle": 0.0,
+        "seed": 102
+      },
+      "horizon": 20,
+      "model": {
+        "checkpoint": "world_model/checkpoints/fetchpush_scripted_phase1_dynamics.pt",
+        "sha256_16": "d9f5d114c6eae5ff"
+      },
+      "predicted_object_xy_disp_m": 0.0221
+    },
+    {
+      "dream_id": "d02_angle_left",
+      "status": "predicted",
+      "plausible": true,
+      "max_abs_predicted_state": 1.8085,
+      "start_ref": {
+        "dataset_id": "fetchpush_scripted_phase1",
+        "split": "test_heldout",
+        "episode": 33,
+        "t": 18
+      },
+      "start_obs_sha": "7d512edf11f5f1bb",
+      "branch": {
+        "name": "angle_left",
+        "kind": "scripted",
+        "angle": 35.0,
+        "seed": 102
+      },
+      "horizon": 20,
+      "model": {
+        "checkpoint": "world_model/checkpoints/fetchpush_scripted_phase1_dynamics.pt",
+        "sha256_16": "d9f5d114c6eae5ff"
+      },
+      "predicted_object_xy_disp_m": 0.0202
+    },
+    {
+      "dream_id": "d02_angle_right",
+      "status": "predicted",
+      "plausible": true,
+      "max_abs_predicted_state": 1.8113,
+      "start_ref": {
+        "dataset_id": "fetchpush_scripted_phase1",
+        "split": "test_heldout",
+        "episode": 33,
+        "t": 18
+      },
+      "start_obs_sha": "7d512edf11f5f1bb",
+      "branch": {
+        "name": "angle_right",
+        "kind": "scripted",
+        "angle": -35.0,
+        "seed": 102
+      },
+      "horizon": 20,
+      "model": {
+        "checkpoint": "world_model/checkpoints/fetchpush_scripted_phase1_dynamics.pt",
+        "sha256_16": "d9f5d114c6eae5ff"
+      },
+      "predicted_object_xy_disp_m": 0.0387
+    },
+    {
+      "dream_id": "d02_noop",
+      "status": "predicted",
+      "plausible": true,
+      "max_abs_predicted_state": 1.791,
+      "start_ref": {
+        "dataset_id": "fetchpush_scripted_phase1",
+        "split": "test_heldout",
+        "episode": 33,
+        "t": 18
+      },
+      "start_obs_sha": "7d512edf11f5f1bb",
+      "branch": {
+        "name": "noop",
+        "kind": "fixed",
+        "value": 0.0,
+        "seed": 102
+      },
+      "horizon": 20,
+      "model": {
+        "checkpoint": "world_model/checkpoints/fetchpush_scripted_phase1_dynamics.pt",
+        "sha256_16": "d9f5d114c6eae5ff"
+      },
+      "predicted_object_xy_disp_m": 0.2889
+    },
+    {
+      "dream_id": "d02_random",
+      "status": "predicted",
+      "plausible": false,
+      "max_abs_predicted_state": 75306.2969,
+      "start_ref": {
+        "dataset_id": "fetchpush_scripted_phase1",
+        "split": "test_heldout",
+        "episode": 33,
+        "t": 18
+      },
+      "start_obs_sha": "7d512edf11f5f1bb",
+      "branch": {
+        "name": "random",
+        "kind": "random",
+        "seed": 102
+      },
+      "horizon": 20,
+      "model": {
+        "checkpoint": "world_model/checkpoints/fetchpush_scripted_phase1_dynamics.pt",
+        "sha256_16": "d9f5d114c6eae5ff"
+      },
+      "predicted_object_xy_disp_m": null
+    },
+    {
+      "dream_id": "d03_toward_goal",
+      "status": "predicted",
+      "plausible": true,
+      "max_abs_predicted_state": 1.6479,
+      "start_ref": {
+        "dataset_id": "fetchpush_scripted_phase1",
+        "split": "test_heldout",
+        "episode": 15,
+        "t": 29
+      },
+      "start_obs_sha": "9f13766807e7ec6a",
+      "branch": {
+        "name": "toward_goal",
+        "kind": "scripted",
+        "angle": 0.0,
+        "seed": 103
+      },
+      "horizon": 20,
+      "model": {
+        "checkpoint": "world_model/checkpoints/fetchpush_scripted_phase1_dynamics.pt",
+        "sha256_16": "d9f5d114c6eae5ff"
+      },
+      "predicted_object_xy_disp_m": 0.0255
+    },
+    {
+      "dream_id": "d03_angle_left",
+      "status": "predicted",
+      "plausible": true,
+      "max_abs_predicted_state": 1.6479,
+      "start_ref": {
+        "dataset_id": "fetchpush_scripted_phase1",
+        "split": "test_heldout",
+        "episode": 15,
+        "t": 29
+      },
+      "start_obs_sha": "9f13766807e7ec6a",
+      "branch": {
+        "name": "angle_left",
+        "kind": "scripted",
+        "angle": 35.0,
+        "seed": 103
+      },
+      "horizon": 20,
+      "model": {
+        "checkpoint": "world_model/checkpoints/fetchpush_scripted_phase1_dynamics.pt",
+        "sha256_16": "d9f5d114c6eae5ff"
+      },
+      "predicted_object_xy_disp_m": 0.0215
+    },
+    {
+      "dream_id": "d03_angle_right",
+      "status": "predicted",
+      "plausible": true,
+      "max_abs_predicted_state": 1.6479,
+      "start_ref": {
+        "dataset_id": "fetchpush_scripted_phase1",
+        "split": "test_heldout",
+        "episode": 15,
+        "t": 29
+      },
+      "start_obs_sha": "9f13766807e7ec6a",
+      "branch": {
+        "name": "angle_right",
+        "kind": "scripted",
+        "angle": -35.0,
+        "seed": 103
+      },
+      "horizon": 20,
+      "model": {
+        "checkpoint": "world_model/checkpoints/fetchpush_scripted_phase1_dynamics.pt",
+        "sha256_16": "d9f5d114c6eae5ff"
+      },
+      "predicted_object_xy_disp_m": 0.0626
+    },
+    {
+      "dream_id": "d03_noop",
+      "status": "predicted",
+      "plausible": true,
+      "max_abs_predicted_state": 1.6479,
+      "start_ref": {
+        "dataset_id": "fetchpush_scripted_phase1",
+        "split": "test_heldout",
+        "episode": 15,
+        "t": 29
+      },
+      "start_obs_sha": "9f13766807e7ec6a",
+      "branch": {
+        "name": "noop",
+        "kind": "fixed",
+        "value": 0.0,
+        "seed": 103
+      },
+      "horizon": 20,
+      "model": {
+        "checkpoint": "world_model/checkpoints/fetchpush_scripted_phase1_dynamics.pt",
+        "sha256_16": "d9f5d114c6eae5ff"
+      },
+      "predicted_object_xy_disp_m": 0.2977
+    },
+    {
+      "dream_id": "d03_random",
+      "status": "predicted",
+      "plausible": false,
+      "max_abs_predicted_state": 93470.3906,
+      "start_ref": {
+        "dataset_id": "fetchpush_scripted_phase1",
+        "split": "test_heldout",
+        "episode": 15,
+        "t": 29
+      },
+      "start_obs_sha": "9f13766807e7ec6a",
+      "branch": {
+        "name": "random",
+        "kind": "random",
+        "seed": 103
+      },
+      "horizon": 20,
+      "model": {
+        "checkpoint": "world_model/checkpoints/fetchpush_scripted_phase1_dynamics.pt",
+        "sha256_16": "d9f5d114c6eae5ff"
+      },
+      "predicted_object_xy_disp_m": null
+    },
+    {
+      "dream_id": "d04_toward_goal",
+      "status": "predicted",
+      "plausible": true,
+      "max_abs_predicted_state": 1.7975,
+      "start_ref": {
+        "dataset_id": "fetchpush_scripted_phase1",
+        "split": "test_heldout",
+        "episode": 5,
+        "t": 21
+      },
+      "start_obs_sha": "8d72ed86dec4596d",
+      "branch": {
+        "name": "toward_goal",
+        "kind": "scripted",
+        "angle": 0.0,
+        "seed": 104
+      },
+      "horizon": 20,
+      "model": {
+        "checkpoint": "world_model/checkpoints/fetchpush_scripted_phase1_dynamics.pt",
+        "sha256_16": "d9f5d114c6eae5ff"
+      },
+      "predicted_object_xy_disp_m": 0.0273
+    },
+    {
+      "dream_id": "d04_angle_left",
+      "status": "predicted",
+      "plausible": true,
+      "max_abs_predicted_state": 1.7919,
+      "start_ref": {
+        "dataset_id": "fetchpush_scripted_phase1",
+        "split": "test_heldout",
+        "episode": 5,
+        "t": 21
+      },
+      "start_obs_sha": "8d72ed86dec4596d",
+      "branch": {
+        "name": "angle_left",
+        "kind": "scripted",
+        "angle": 35.0,
+        "seed": 104
+      },
+      "horizon": 20,
+      "model": {
+        "checkpoint": "world_model/checkpoints/fetchpush_scripted_phase1_dynamics.pt",
+        "sha256_16": "d9f5d114c6eae5ff"
+      },
+      "predicted_object_xy_disp_m": 0.0057
+    },
+    {
+      "dream_id": "d04_angle_right",
+      "status": "predicted",
+      "plausible": true,
+      "max_abs_predicted_state": 1.8037,
+      "start_ref": {
+        "dataset_id": "fetchpush_scripted_phase1",
+        "split": "test_heldout",
+        "episode": 5,
+        "t": 21
+      },
+      "start_obs_sha": "8d72ed86dec4596d",
+      "branch": {
+        "name": "angle_right",
+        "kind": "scripted",
+        "angle": -35.0,
+        "seed": 104
+      },
+      "horizon": 20,
+      "model": {
+        "checkpoint": "world_model/checkpoints/fetchpush_scripted_phase1_dynamics.pt",
+        "sha256_16": "d9f5d114c6eae5ff"
+      },
+      "predicted_object_xy_disp_m": 0.0641
+    },
+    {
+      "dream_id": "d04_noop",
+      "status": "predicted",
+      "plausible": true,
+      "max_abs_predicted_state": 1.7883,
+      "start_ref": {
+        "dataset_id": "fetchpush_scripted_phase1",
+        "split": "test_heldout",
+        "episode": 5,
+        "t": 21
+      },
+      "start_obs_sha": "8d72ed86dec4596d",
+      "branch": {
+        "name": "noop",
+        "kind": "fixed",
+        "value": 0.0,
+        "seed": 104
+      },
+      "horizon": 20,
+      "model": {
+        "checkpoint": "world_model/checkpoints/fetchpush_scripted_phase1_dynamics.pt",
+        "sha256_16": "d9f5d114c6eae5ff"
+      },
+      "predicted_object_xy_disp_m": 0.3215
+    },
+    {
+      "dream_id": "d04_random",
+      "status": "predicted",
+      "plausible": false,
+      "max_abs_predicted_state": 98088.4688,
+      "start_ref": {
+        "dataset_id": "fetchpush_scripted_phase1",
+        "split": "test_heldout",
+        "episode": 5,
+        "t": 21
+      },
+      "start_obs_sha": "8d72ed86dec4596d",
+      "branch": {
+        "name": "random",
+        "kind": "random",
+        "seed": 104
+      },
+      "horizon": 20,
+      "model": {
+        "checkpoint": "world_model/checkpoints/fetchpush_scripted_phase1_dynamics.pt",
+        "sha256_16": "d9f5d114c6eae5ff"
+      },
+      "predicted_object_xy_disp_m": null
+    },
+    {
+      "dream_id": "d05_toward_goal",
+      "status": "predicted",
+      "plausible": true,
+      "max_abs_predicted_state": 0.9688,
+      "start_ref": {
+        "dataset_id": "fetchpush_scripted_phase1",
+        "split": "test_heldout",
+        "episode": 29,
+        "t": 18
+      },
+      "start_obs_sha": "c3db8323c493bbe8",
+      "branch": {
+        "name": "toward_goal",
+        "kind": "scripted",
+        "angle": 0.0,
+        "seed": 105
+      },
+      "horizon": 20,
+      "model": {
+        "checkpoint": "world_model/checkpoints/fetchpush_scripted_phase1_dynamics.pt",
+        "sha256_16": "d9f5d114c6eae5ff"
+      },
+      "predicted_object_xy_disp_m": 0.1839
+    },
+    {
+      "dream_id": "d05_angle_left",
+      "status": "predicted",
+      "plausible": true,
+      "max_abs_predicted_state": 0.8756,
+      "start_ref": {
+        "dataset_id": "fetchpush_scripted_phase1",
+        "split": "test_heldout",
+        "episode": 29,
+        "t": 18
+      },
+      "start_obs_sha": "c3db8323c493bbe8",
+      "branch": {
+        "name": "angle_left",
+        "kind": "scripted",
+        "angle": 35.0,
+        "seed": 105
+      },
+      "horizon": 20,
+      "model": {
+        "checkpoint": "world_model/checkpoints/fetchpush_scripted_phase1_dynamics.pt",
+        "sha256_16": "d9f5d114c6eae5ff"
+      },
+      "predicted_object_xy_disp_m": 0.085
+    },
+    {
+      "dream_id": "d05_angle_right",
+      "status": "predicted",
+      "plausible": true,
+      "max_abs_predicted_state": 1.0649,
+      "start_ref": {
+        "dataset_id": "fetchpush_scripted_phase1",
+        "split": "test_heldout",
+        "episode": 29,
+        "t": 18
+      },
+      "start_obs_sha": "c3db8323c493bbe8",
+      "branch": {
+        "name": "angle_right",
+        "kind": "scripted",
+        "angle": -35.0,
+        "seed": 105
+      },
+      "horizon": 20,
+      "model": {
+        "checkpoint": "world_model/checkpoints/fetchpush_scripted_phase1_dynamics.pt",
+        "sha256_16": "d9f5d114c6eae5ff"
+      },
+      "predicted_object_xy_disp_m": 0.2398
+    },
+    {
+      "dream_id": "d05_noop",
+      "status": "predicted",
+      "plausible": true,
+      "max_abs_predicted_state": 0.9928,
+      "start_ref": {
+        "dataset_id": "fetchpush_scripted_phase1",
+        "split": "test_heldout",
+        "episode": 29,
+        "t": 18
+      },
+      "start_obs_sha": "c3db8323c493bbe8",
+      "branch": {
+        "name": "noop",
+        "kind": "fixed",
+        "value": 0.0,
+        "seed": 105
+      },
+      "horizon": 20,
+      "model": {
+        "checkpoint": "world_model/checkpoints/fetchpush_scripted_phase1_dynamics.pt",
+        "sha256_16": "d9f5d114c6eae5ff"
+      },
+      "predicted_object_xy_disp_m": 0.1674
+    },
+    {
+      "dream_id": "d05_random",
+      "status": "predicted",
+      "plausible": false,
+      "max_abs_predicted_state": 50047.4531,
+      "start_ref": {
+        "dataset_id": "fetchpush_scripted_phase1",
+        "split": "test_heldout",
+        "episode": 29,
+        "t": 18
+      },
+      "start_obs_sha": "c3db8323c493bbe8",
+      "branch": {
+        "name": "random",
+        "kind": "random",
+        "seed": 105
+      },
+      "horizon": 20,
+      "model": {
+        "checkpoint": "world_model/checkpoints/fetchpush_scripted_phase1_dynamics.pt",
+        "sha256_16": "d9f5d114c6eae5ff"
+      },
+      "predicted_object_xy_disp_m": null
+    }
+  ]
+}

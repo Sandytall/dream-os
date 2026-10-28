@@ -1,0 +1,107 @@
+{
+  "phase": 8,
+  "stage": "headroom_gate",
+  "dataset_id": "fetchslide_phase8",
+  "env": "FetchSlide-v4",
+  "timestamp_utc": "2026-10-27T17:26:25+00:00",
+  "provenance": {
+    "git_commit": "9ad92c5cee362873db120955d644b7d5248e02d9",
+    "device": "cuda",
+    "n_seeds": 4,
+    "budgets_episodes": [
+      20,
+      50,
+      100,
+      168
+    ],
+    "peak_vram_gb": 0.027
+  },
+  "metric": "held-out object-position one-step RMSE (m), lower=better; mean +/- std over seeds",
+  "persistence_baseline": {
+    "object_pos_rmse_m": 0.01175,
+    "physical_state_rmse": 0.03126
+  },
+  "by_budget": {
+    "20": {
+      "n_transitions": 1000,
+      "object_pos_rmse_m_mean": 0.00982,
+      "object_pos_rmse_m_std": 0.00079,
+      "physical_state_rmse_mean": 0.02922,
+      "multistep_object_rmse_m": {
+        "1": 0.0031,
+        "5": 0.0259,
+        "10": 0.0698,
+        "20": 0.154
+      },
+      "object_runs": [
+        0.01039,
+        0.01014,
+        0.00846,
+        0.0103
+      ],
+      "train_seconds_mean": 0.39
+    },
+    "50": {
+      "n_transitions": 2500,
+      "object_pos_rmse_m_mean": 0.00919,
+      "object_pos_rmse_m_std": 0.00136,
+      "physical_state_rmse_mean": 0.02869,
+      "multistep_object_rmse_m": {
+        "1": 0.0037,
+        "5": 0.0263,
+        "10": 0.0688,
+        "20": 0.1512
+      },
+      "object_runs": [
+        0.00997,
+        0.00986,
+        0.00684,
+        0.01007
+      ],
+      "train_seconds_mean": 0.35
+    },
+    "100": {
+      "n_transitions": 5000,
+      "object_pos_rmse_m_mean": 0.0047,
+      "object_pos_rmse_m_std": 0.00072,
+      "physical_state_rmse_mean": 0.02518,
+      "multistep_object_rmse_m": {
+        "1": 0.0022,
+        "5": 0.0218,
+        "10": 0.0601,
+        "20": 0.1282
+      },
+      "object_runs": [
+        0.00408,
+        0.00468,
+        0.00415,
+        0.00588
+      ],
+      "train_seconds_mean": 0.73
+    },
+    "168": {
+      "n_transitions": 8400,
+      "object_pos_rmse_m_mean": 0.00412,
+      "object_pos_rmse_m_std": 0.0003,
+      "physical_state_rmse_mean": 0.02504,
+      "multistep_object_rmse_m": {
+        "1": 0.0019,
+        "5": 0.0218,
+        "10": 0.0594,
+        "20": 0.1217
+      },
+      "object_runs": [
+        0.00405,
+        0.00393,
+        0.00386,
+        0.00462
+      ],
+      "train_seconds_mean": 1.18
+    }
+  },
+  "headroom_delta_m": 0.0057,
+  "headroom_seed_spread_m": 0.00109,
+  "model_beats_persistence_at_full": true,
+  "wall_seconds": 17.8,
+  "gate_passed": true
+}

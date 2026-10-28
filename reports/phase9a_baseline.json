@@ -1,0 +1,162 @@
+{
+  "phase": "9A",
+  "stage": "baseline_characterization",
+  "dataset_id": "fetchslide_phase8",
+  "env": "FetchSlide-v4",
+  "timestamp_utc": "2026-10-27T19:04:11+00:00",
+  "provenance": {
+    "git_commit": "9ad92c5cee362873db120955d644b7d5248e02d9",
+    "device": "cuda",
+    "n_seeds": 3,
+    "train_episodes": 168,
+    "epochs": 400,
+    "patience": 40,
+    "model": "ResidualDynamics (one-step loss, unchanged)",
+    "num_params": 79897,
+    "peak_vram_gb": 0.027
+  },
+  "obs_layout_check": {
+    "note": "corr of cols 14:17 (object_velp) with measured object displacement (x,y,z)",
+    "corr": {
+      "14": [
+        0.46,
+        0.0,
+        0.01
+      ],
+      "15": [
+        -0.0,
+        0.34,
+        0.04
+      ],
+      "16": [
+        0.06,
+        0.07,
+        0.7
+      ]
+    }
+  },
+  "persistence_baseline": {
+    "object_pos_rmse_m": 0.01175,
+    "object_rot_rmse": 0.15605,
+    "object_relvel_rmse": 0.01622,
+    "grip_pos_rmse_m": 0.01465,
+    "physical_state_rmse": 0.03126
+  },
+  "one_step_held_out": {
+    "object_pos_rmse_m": {
+      "mean": 0.00395,
+      "std": 8e-05
+    },
+    "object_rot_rmse": {
+      "mean": 0.16564,
+      "std": 0.00277
+    },
+    "object_relvel_rmse": {
+      "mean": 0.00674,
+      "std": 0.00015
+    },
+    "grip_pos_rmse_m": {
+      "mean": 0.00414,
+      "std": 5e-05
+    },
+    "physical_state_rmse": {
+      "mean": 0.02503,
+      "std": 0.00041
+    },
+    "train_object_pos_rmse_m": {
+      "mean": 0.00376,
+      "std": 0.00013
+    }
+  },
+  "generalization_gap_object_m": 0.00019,
+  "multistep_object_rmse_m": {
+    "1": {
+      "model_mean": 0.0016,
+      "persistence": 0.0
+    },
+    "5": {
+      "model_mean": 0.0217,
+      "persistence": 0.0217
+    },
+    "10": {
+      "model_mean": 0.0587,
+      "persistence": 0.0675
+    },
+    "15": {
+      "model_mean": 0.0919,
+      "persistence": 0.1118
+    },
+    "20": {
+      "model_mean": 0.1192,
+      "persistence": 0.1569
+    }
+  },
+  "error_growth_ratio_h20_over_h1": 74.5,
+  "stratified_one_step_object_err": {
+    "by_action_magnitude": {
+      "low(<1)": {
+        "n": 741,
+        "mean_obj_err_m": 0.00374,
+        "frac": 0.412
+      },
+      "mid(1-2)": {
+        "n": 1059,
+        "mean_obj_err_m": 0.00466,
+        "frac": 0.588
+      },
+      "high(>2)": {
+        "n": 0,
+        "mean_obj_err_m": null,
+        "frac": 0.0
+      }
+    },
+    "by_object_displacement_m": {
+      "near_static(<0.005)": {
+        "n": 1171,
+        "mean_obj_err_m": 0.00295,
+        "frac": 0.651
+      },
+      "sliding(0.005-0.02)": {
+        "n": 248,
+        "mean_obj_err_m": 0.00487,
+        "frac": 0.138
+      },
+      "fast(>0.02)": {
+        "n": 381,
+        "mean_obj_err_m": 0.00802,
+        "frac": 0.212
+      }
+    },
+    "by_contact_distance_m": {
+      "near(<0.05)": {
+        "n": 138,
+        "mean_obj_err_m": 0.00794,
+        "frac": 0.077
+      },
+      "mid(0.05-0.10)": {
+        "n": 566,
+        "mean_obj_err_m": 0.00403,
+        "frac": 0.314
+      },
+      "far(>0.10)": {
+        "n": 1096,
+        "mean_obj_err_m": 0.00396,
+        "frac": 0.609
+      }
+    }
+  },
+  "uncertainty_ood_calibration": {
+    "spearman_uncertainty_vs_error": 0.568,
+    "spearman_ood_vs_error": 0.388,
+    "spearman_uncertainty_vs_ood": 0.436,
+    "error_in_high_vs_low_uncertainty_tercile_m": [
+      0.00707,
+      0.00237
+    ],
+    "n_test_transitions": 1800
+  },
+  "runtime": {
+    "train_seconds_mean": 1.47,
+    "wall_seconds": 13.11
+  }
+}

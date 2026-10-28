@@ -1,0 +1,39 @@
+{
+  "phase": 3,
+  "batch_id": "phase3_fetchpush",
+  "timestamp_utc": "2026-10-27T10:22:26+00:00",
+  "device": "cuda",
+  "n_starts": 6,
+  "branches": [
+    "toward_goal",
+    "angle_left",
+    "angle_right",
+    "noop",
+    "random"
+  ],
+  "horizon": 20,
+  "n_dreams": 30,
+  "model_checkpoint_sha256_16": "d9f5d114c6eae5ff",
+  "reproducibility_max_abs_err": 0.0,
+  "reproducibility_tol": 1e-05,
+  "all_dreams_traceable": true,
+  "n_plausible": 24,
+  "n_diverged_out_of_distribution": 6,
+  "diverged_by_branch": {
+    "toward_goal": 0,
+    "angle_left": 0,
+    "angle_right": 0,
+    "noop": 0,
+    "random": 6
+  },
+  "predicted_obj_xy_disp_by_branch_m_plausible_only": {
+    "toward_goal": 0.0972,
+    "angle_left": 0.0715,
+    "angle_right": 0.1114,
+    "noop": 0.2356,
+    "random": null
+  },
+  "manifest": "data/manifests/dreams_phase3_fetchpush.json",
+  "wall_seconds": 0.74,
+  "gate_passed": true
+}

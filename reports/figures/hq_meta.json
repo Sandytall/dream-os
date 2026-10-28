@@ -1,0 +1,24 @@
+{
+  "resolution": 720,
+  "clips": {
+    "success": {
+      "file": "assets/hq_success.mp4",
+      "kb": 87
+    },
+    "drop_real": {
+      "file": "assets/hq_drop.mp4",
+      "kb": 37
+    },
+    "match": {
+      "file": "assets/hq_match.mp4",
+      "kb": 55
+    }
+  },
+  "sandbox": {
+    "file": "assets/sandbox_boxes.mp4",
+    "boxes": 9,
+    "frames": 140,
+    "kb": 104
+  },
+  "note": "FetchPush clips are real benchmark rollouts; sandbox is a visual-only physics scene, not used for training or evaluation"
+}

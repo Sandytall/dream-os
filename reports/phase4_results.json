@@ -1,0 +1,49 @@
+{
+  "phase": 4,
+  "batch_id": "phase3_fetchpush",
+  "timestamp_utc": "2026-10-27T10:26:24+00:00",
+  "n_dreams_verified": 30,
+  "max_reconstruction_err_m": 0.0,
+  "classification_counts": {
+    "supported": 12,
+    "contradicted": 14,
+    "unresolved": 4
+  },
+  "classification_by_branch": {
+    "toward_goal": {
+      "supported": 4,
+      "contradicted": 1,
+      "unresolved": 1
+    },
+    "angle_left": {
+      "supported": 4,
+      "contradicted": 0,
+      "unresolved": 2
+    },
+    "angle_right": {
+      "supported": 4,
+      "contradicted": 1,
+      "unresolved": 1
+    },
+    "noop": {
+      "supported": 0,
+      "contradicted": 6,
+      "unresolved": 0
+    },
+    "random": {
+      "supported": 0,
+      "contradicted": 6,
+      "unresolved": 0
+    }
+  },
+  "verification_agreement_rate": 0.4,
+  "mean_object_discrepancy_plausible_m": 0.0939,
+  "diverged_all_contradicted": true,
+  "tolerances_m": {
+    "support": 0.05,
+    "contradict": 0.1
+  },
+  "records_manifest": "data/manifests/verification_phase3_fetchpush.json",
+  "wall_seconds": 1.48,
+  "gate_passed": true
+}
